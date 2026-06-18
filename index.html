@@ -389,7 +389,7 @@
             const badge = car.badge || 'Disponible';
             const price = extractPrice(car);
             const specs = buildSpecs(car, car.body);
-            const image = normalizeImagePath((car.image ? car.image.replace("public/", "") : ""));
+            const image = normalizeImagePath((car.image?.replace("public/", "") ? car.image?.replace("public/", "").replace("public/", "") : ""));
             const waMsg = `Bonjour, je souhaite réserver ${title} à Meknès ou Fès.`;
             const colSpan = total === 3 && index === 2 ? ' md:col-span-2 lg:col-span-1' : '';
 
