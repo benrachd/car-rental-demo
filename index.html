@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Auto Rent — Location de voitures premium à Meknès et Fès. Réservation instantanée, livraison aéroport, flotte récente.">
     <title>Auto Rent | Location Premium — Meknès & Fès</title>
-    <script src="/images/" + (car.title.toLowerCase().includes("logan") ? "logan.jpg" : car.title.toLowerCase().includes("clio") ? "clio.jpg" : "troc.png")></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -184,7 +184,6 @@
                     </div>
                 </div>
 
-                <!-- Booking Widget -->
                 <div class="glass rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/30">
                     <h2 class="text-xl font-bold mb-1">Réservez votre véhicule</h2>
                     <p class="text-slate-500 text-sm mb-6">Disponibilité confirmée en quelques minutes</p>
@@ -238,17 +237,108 @@
                 </a>
             </div>
 
-            <div id="fleet-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                <div id="fleet-loading" class="col-span-full flex flex-col items-center justify-center py-16 text-slate-400">
-                    <svg class="w-8 h-8 animate-spin text-amber-500 mb-4" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-                    </svg>
-                    <p class="text-sm">Chargement de la flotte…</p>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+                <!-- Renault Clio -->
+                <article class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="car-img-wrap aspect-[16/10] w-full overflow-hidden">
+                        <img
+                            src="public/images/clio.jpg"
+                            alt="Renault Clio"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                            width="600"
+                            height="375"
+                        >
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between gap-3">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-sky-400 bg-sky-400/10 px-2.5 py-1 rounded">Populaire</span>
+                                <h3 class="text-xl font-bold mt-3">Renault Clio</h3>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <p class="text-2xl font-black text-amber-500">350</p>
+                                <p class="text-slate-500 text-xs">DH / jour</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-xs mt-5 pt-5 border-t border-slate-800/80 text-center leading-relaxed">
+                            ⛽ Diesel &nbsp;•&nbsp; ⚙️ Manuelle &nbsp;•&nbsp; 👤 5 Places
+                        </p>
+                        <a href="https://wa.me/212665173719?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20Renault%20Clio%20%C3%A0%20Mekn%C3%A8s%20ou%20F%C3%A8s." class="wa-btn flex items-center justify-center gap-2 text-white font-bold py-3 rounded-xl mt-5 text-sm">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
+                            Réserver
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Dacia Logan -->
+                <article class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="car-img-wrap aspect-[16/10] w-full overflow-hidden">
+                        <img
+                            src="public/images/logan.jpg"
+                            alt="Dacia Logan"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                            width="600"
+                            height="375"
+                        >
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between gap-3">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded">Économique</span>
+                                <h3 class="text-xl font-bold mt-3">Dacia Logan</h3>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <p class="text-2xl font-black text-amber-500">300</p>
+                                <p class="text-slate-500 text-xs">DH / jour</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-xs mt-5 pt-5 border-t border-slate-800/80 text-center leading-relaxed">
+                            ⛽ Diesel &nbsp;•&nbsp; ⚙️ Manuelle &nbsp;•&nbsp; 👤 5 Places
+                        </p>
+                        <a href="https://wa.me/212665173719?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20Dacia%20Logan%20%C3%A0%20Mekn%C3%A8s%20ou%20F%C3%A8s." class="wa-btn flex items-center justify-center gap-2 text-white font-bold py-3 rounded-xl mt-5 text-sm">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
+                            Réserver
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Volkswagen T-Roc -->
+                <article class="glass-card rounded-2xl overflow-hidden group md:col-span-2 lg:col-span-1">
+                    <div class="car-img-wrap aspect-[16/10] w-full overflow-hidden">
+                        <img
+                            src="public/images/troc.png"
+                            alt="Volkswagen T-Roc"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                            width="600"
+                            height="375"
+                        >
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between gap-3">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded">SUV Luxury</span>
+                                <h3 class="text-xl font-bold mt-3">Volkswagen T-Roc</h3>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <p class="text-2xl font-black text-amber-500">600</p>
+                                <p class="text-slate-500 text-xs">DH / jour</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-400 text-xs mt-5 pt-5 border-t border-slate-800/80 text-center leading-relaxed">
+                            ⛽ Diesel &nbsp;•&nbsp; ⚙️ Automatique &nbsp;•&nbsp; 👤 5 Places
+                        </p>
+                        <a href="https://wa.me/212665173719?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20un%20Volkswagen%20T-Roc%20%C3%A0%20Mekn%C3%A8s%20ou%20F%C3%A8s." class="wa-btn flex items-center justify-center gap-2 text-white font-bold py-3 rounded-xl mt-5 text-sm">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
+                            Réserver
+                        </a>
+                    </div>
+                </article>
+
             </div>
-            <p id="fleet-empty" class="hidden text-center text-slate-500 py-12">Aucun véhicule disponible pour le moment.</p>
-            <p id="fleet-error" class="hidden text-center text-red-400/80 py-12 text-sm"></p>
         </div>
     </section>
 
@@ -324,179 +414,9 @@
         <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
     </a>
 
-    <script src="/images/" + (car.title.toLowerCase().includes("logan") ? "logan.jpg" : car.title.toLowerCase().includes("clio") ? "clio.jpg" : "troc.png")></script>
     <script>
         const WA = '212665173719';
-        const FLEET_DIR = 'content/fleet';
-        const GITHUB_FLEET_API = 'https://api.github.com/repos/benrachd/car-rental-demo/contents/content/fleet?ref=master';
 
-        const BADGE_CLASSES = {
-            'Économique': 'text-emerald-400 bg-emerald-400/10',
-            'Populaire': 'text-sky-400 bg-sky-400/10',
-            'SUV Luxury': 'text-amber-500 bg-amber-500/10',
-        };
-
-        const WA_ICON = '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>';
-
-        function parseFrontmatter(raw) {
-            const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-            if (!match) return { meta: {}, body: raw.trim() };
-            const meta = jsyaml.load(match[1]) || {};
-            const body = raw.slice(match[0].length).trim();
-            return { meta, body };
-        }
-
-        function escapeHtml(str) {
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;');
-        }
-
-        function normalizeImagePath(image) {
-            if (!image) return '';
-            if (/^https?:\/\//.test(image)) return image;
-            let path = String(image).trim();
-            if (path.startsWith('/')) path = path.slice(1);
-            if (path.startsWith('public/')) path = path.replace(/^public\//, '');
-            return '/' + path;
-        }
-
-        function buildSpecs(meta, body) {
-            if (meta.fuel || meta.transmission || meta.seats) {
-                const fuel = meta.fuel || 'Diesel';
-                const transmission = meta.transmission || 'Manuelle';
-                const seats = meta.seats || 5;
-                return `⛽ ${escapeHtml(fuel)} &nbsp;•&nbsp; ⚙️ ${escapeHtml(transmission)} &nbsp;•&nbsp; 👤 ${escapeHtml(seats)} Places`;
-            }
-            const text = (meta.description || body || '').trim();
-            return text ? escapeHtml(text) : '';
-        }
-
-        function extractPrice(meta) {
-            if (meta.price != null && meta.price !== '') return Number(meta.price);
-            const match = String(meta.description || '').match(/(\d+)\s*(?:DH|dh|mad)/i);
-            return match ? Number(match[1]) : null;
-        }
-
-        function badgeClass(badge) {
-            return BADGE_CLASSES[badge] || 'text-slate-400 bg-slate-400/10';
-        }
-
-        function renderCarCard(car, index, total) {
-            const title = car.title || 'Véhicule';
-            const badge = car.badge || 'Disponible';
-            const price = extractPrice(car);
-            const specs = buildSpecs(car, car.body);
-            const image = normalizeImagePath((car.image?.replace("public/", "") ? car.image?.replace("public/", "").replace("public/", "") : ""));
-            const waMsg = `Bonjour, je souhaite réserver ${title} à Meknès ou Fès.`;
-            const colSpan = total === 3 && index === 2 ? ' md:col-span-2 lg:col-span-1' : '';
-
-            return `
-                <article class="glass-card rounded-2xl overflow-hidden group${colSpan}">
-                    <div class="car-img-wrap aspect-[16/10] w-full overflow-hidden">
-                        <img
-                            src="/images/" + (car.title.toLowerCase().includes("logan") ? "logan.jpg" : car.title.toLowerCase().includes("clio") ? "clio.jpg" : "troc.png")
-                            alt="${escapeHtml(title)}"
-                            class="w-full h-full object-cover"
-                            loading="lazy"
-                            width="600"
-                            height="375"
-                        >
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-start justify-between gap-3">
-                            <div>
-                                <span class="text-[10px] font-bold uppercase tracking-widest ${badgeClass(badge)} px-2.5 py-1 rounded">${escapeHtml(badge)}</span>
-                                <h3 class="text-xl font-bold mt-3">${escapeHtml(title)}</h3>
-                            </div>
-                            ${price != null ? `
-                            <div class="text-right shrink-0">
-                                <p class="text-2xl font-black text-amber-500">${price}</p>
-                                <p class="text-slate-500 text-xs">DH / jour</p>
-                            </div>` : ''}
-                        </div>
-                        ${specs ? `<p class="text-slate-400 text-xs mt-5 pt-5 border-t border-slate-800/80 text-center leading-relaxed">${specs}</p>` : ''}
-                        <a href="https://wa.me/${WA}?text=${encodeURIComponent(waMsg)}" class="wa-btn flex items-center justify-center gap-2 text-white font-bold py-3 rounded-xl mt-5 text-sm">
-                            ${WA_ICON}
-                            Réserver
-                        </a>
-                    </div>
-                </article>`;
-        }
-
-        async function fetchFleetManifest() {
-            const files = new Set();
-
-            try {
-                const res = await fetch(`${FLEET_DIR}/index.json`);
-                if (res.ok) {
-                    const data = await res.json();
-                    for (const entry of (data.files || data.entries || [])) {
-                        const f = typeof entry === 'string' ? entry : entry.file;
-                        if (f) files.add(f.endsWith('.md') ? f : `${f}.md`);
-                    }
-                }
-            } catch (_) { /* continue */ }
-
-            try {
-                const res = await fetch(GITHUB_FLEET_API);
-                if (res.ok) {
-                    const items = await res.json();
-                    if (Array.isArray(items)) {
-                        items
-                            .filter((item) => item.type === 'file' && item.name.endsWith('.md'))
-                            .forEach((item) => files.add(item.name));
-                    }
-                }
-            } catch (_) { /* continue */ }
-
-            return [...files];
-        }
-
-        async function fetchFleetEntry(filename) {
-            const res = await fetch(`${FLEET_DIR}/${filename}`);
-            if (!res.ok) throw new Error(`Failed to load ${filename}`);
-            const raw = await res.text();
-            const { meta, body } = parseFrontmatter(raw);
-            return { ...meta, body, _filename: filename };
-        }
-
-        async function loadFleet() {
-            const grid = document.getElementById('fleet-grid');
-            const emptyEl = document.getElementById('fleet-empty');
-            const errorEl = document.getElementById('fleet-error');
-
-            try {
-                const files = await fetchFleetManifest();
-                if (!files.length) {
-                    grid.innerHTML = '';
-                    emptyEl.classList.remove('hidden');
-                    return;
-                }
-
-                const entries = await Promise.all(files.map(fetchFleetEntry));
-                entries.sort((a, b) => {
-                    const dateA = a.date ? new Date(a.date).getTime() : 0;
-                    const dateB = b.date ? new Date(b.date).getTime() : 0;
-                    return dateB - dateA;
-                });
-
-                grid.innerHTML = entries.map((car, i) => renderCarCard(car, i, entries.length)).join('');
-                emptyEl.classList.add('hidden');
-                errorEl.classList.add('hidden');
-            } catch (err) {
-                grid.innerHTML = '';
-                errorEl.textContent = 'Impossible de charger la flotte. Veuillez réessayer plus tard.';
-                errorEl.classList.remove('hidden');
-                console.error('Fleet load error:', err);
-            }
-        }
-
-        loadFleet();
-
-        // Mobile menu
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         let menuOpen = false;
@@ -515,7 +435,6 @@
             });
         });
 
-        // Date inputs — min = today
         const today = new Date().toISOString().split('T')[0];
         const dateDebut = document.getElementById('date-debut');
         const dateFin = document.getElementById('date-fin');
@@ -527,7 +446,6 @@
             if (dateFin.value && dateFin.value < dateDebut.value) dateFin.value = dateDebut.value;
         });
 
-        // Booking form → WhatsApp
         document.getElementById('booking-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const lieu = document.getElementById('lieu').value;
@@ -545,6 +463,5 @@
             window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
         });
     </script>
-    <script src="/images/" + (car.title.toLowerCase().includes("logan") ? "logan.jpg" : car.title.toLowerCase().includes("clio") ? "clio.jpg" : "troc.png")></script>
 </body>
 </html>
