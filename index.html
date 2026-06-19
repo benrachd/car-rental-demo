@@ -8,9 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', sans-serif; }
+        body.lang-ar * { font-family: 'Cairo', sans-serif; }
         html { scroll-behavior: smooth; }
 
         .glass {
@@ -95,6 +96,29 @@
             transition: width 0.3s;
         }
         .nav-link:hover::after { width: 100%; }
+        [dir="rtl"] .nav-link::after { left: auto; right: 0; }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(51, 65, 85, 0.6);
+            border-radius: 0.5rem;
+            padding: 0.375rem 0.625rem;
+        }
+        .lang-btn {
+            color: #64748b;
+            transition: color 0.2s;
+            padding: 0 0.125rem;
+        }
+        .lang-btn:hover { color: #fbbf24; }
+        .lang-btn.active { color: #f59e0b; }
+        .lang-divider { color: #334155; user-select: none; }
+
+        [dir="rtl"] .wa-float { right: auto; left: 1.5rem; }
+        [dir="rtl"] #menu-btn span.self-end { align-self: flex-start; margin-right: 0; margin-left: 0.5rem; }
 
         .car-img-wrap { aspect-ratio: 16 / 10; }
         .car-img-wrap img {
@@ -170,21 +194,28 @@
                 <div class="w-9 h-9 rounded-lg btn-amber flex items-center justify-center text-xs font-black">AR</div>
                 <div>
                     <p class="text-lg font-black tracking-wide leading-none">AUTO<span class="text-amber-500">RENT</span></p>
-                    <p class="text-[10px] text-slate-500 tracking-widest uppercase mt-0.5">Meknès · Fès</p>
+                    <p class="text-[10px] text-slate-500 tracking-widest uppercase mt-0.5" data-i18n="nav.cities">Meknès · Fès</p>
                 </div>
             </a>
 
             <nav class="hidden lg:flex items-center gap-9">
-                <a href="#booking" class="nav-link">Réserver</a>
-                <a href="#fleet" class="nav-link">Notre flotte</a>
-                <a href="#features" class="nav-link">Services</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#booking" class="nav-link" data-i18n="nav.book">Réserver</a>
+                <a href="#fleet" class="nav-link" data-i18n="nav.fleet">Notre flotte</a>
+                <a href="#features" class="nav-link" data-i18n="nav.features">Services</a>
+                <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
             </nav>
 
             <div class="flex items-center gap-3">
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="en">EN</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="ar">ع</button>
+                </div>
                 <a href="https://wa.me/212665173719?text=Bonjour%2C%20je%20souhaite%20louer%20une%20voiture%20%C3%A0%20Mekn%C3%A8s%20ou%20F%C3%A8s." class="hidden sm:inline-flex btn-amber text-sm px-5 py-2.5 rounded-lg items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
-                    WhatsApp
+                    <span data-i18n="nav.whatsapp">WhatsApp</span>
                 </a>
                 <button id="menu-btn" type="button" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-slate-700/60" aria-label="Menu">
                     <span class="w-5 h-0.5 bg-slate-300 block"></span>
@@ -196,11 +227,18 @@
 
         <div id="mobile-menu" class="lg:hidden overflow-hidden max-h-0 opacity-0">
             <nav class="px-4 sm:px-6 pb-5 flex flex-col gap-3 border-t border-slate-800/60 pt-4">
-                <a href="#booking" class="text-slate-400 hover:text-amber-500 py-1 text-sm">Réserver</a>
-                <a href="#fleet" class="text-slate-400 hover:text-amber-500 py-1 text-sm">Notre flotte</a>
-                <a href="#features" class="text-slate-400 hover:text-amber-500 py-1 text-sm">Services</a>
-                <a href="#contact" class="text-slate-400 hover:text-amber-500 py-1 text-sm">Contact</a>
-                <a href="https://wa.me/212665173719" class="btn-amber text-center py-3 rounded-lg text-sm mt-1">WhatsApp</a>
+                <a href="#booking" class="text-slate-400 hover:text-amber-500 py-1 text-sm" data-i18n="nav.book">Réserver</a>
+                <a href="#fleet" class="text-slate-400 hover:text-amber-500 py-1 text-sm" data-i18n="nav.fleet">Notre flotte</a>
+                <a href="#features" class="text-slate-400 hover:text-amber-500 py-1 text-sm" data-i18n="nav.features">Services</a>
+                <a href="#contact" class="text-slate-400 hover:text-amber-500 py-1 text-sm" data-i18n="nav.contact">Contact</a>
+                <div class="lang-switch w-fit mt-1">
+                    <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="en">EN</button>
+                    <span class="lang-divider">|</span>
+                    <button type="button" class="lang-btn" data-lang="ar">ع</button>
+                </div>
+                <a href="https://wa.me/212665173719" class="btn-amber text-center py-3 rounded-lg text-sm mt-1" data-i18n="nav.whatsapp">WhatsApp</a>
             </nav>
         </div>
     </header>
@@ -212,61 +250,61 @@
                 <div>
                     <span class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold tracking-widest uppercase">
                         <span class="w-6 h-px bg-amber-500"></span>
-                        Location premium · Maroc
+                        <span data-i18n="hero.eyebrow">Location premium · Maroc</span>
                     </span>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mt-5 leading-[1.1]">
-                        Explorez le Maroc<br>
-                        <span class="text-amber-500">en toute élégance</span>
+                        <span data-i18n="hero.title1">Explorez le Maroc</span><br>
+                        <span class="text-amber-500" data-i18n="hero.title2">en toute élégance</span>
                     </h1>
-                    <p class="text-slate-400 text-lg mt-6 leading-relaxed max-w-lg">
+                    <p class="text-slate-400 text-lg mt-6 leading-relaxed max-w-lg" data-i18n="hero.desc">
                         Meknès, Fès et au-delà — flotte récente, tarifs transparents et livraison gratuite à l'aéroport. Réservez en quelques clics.
                     </p>
                     <div class="flex flex-wrap gap-6 mt-10 text-sm">
                         <div>
                             <p class="text-2xl font-black text-amber-500">+500</p>
-                            <p class="text-slate-500 mt-0.5">Clients satisfaits</p>
+                            <p class="text-slate-500 mt-0.5" data-i18n="hero.stat1">Clients satisfaits</p>
                         </div>
                         <div>
                             <p class="text-2xl font-black text-amber-500">24/7</p>
-                            <p class="text-slate-500 mt-0.5">Assistance</p>
+                            <p class="text-slate-500 mt-0.5" data-i18n="hero.stat2">Assistance</p>
                         </div>
                         <div>
                             <p class="text-2xl font-black text-amber-500">4.9★</p>
-                            <p class="text-slate-500 mt-0.5">Note moyenne</p>
+                            <p class="text-slate-500 mt-0.5" data-i18n="hero.stat3">Note moyenne</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="glass rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/30">
-                    <h2 class="text-xl font-bold mb-1">Réservez votre véhicule</h2>
-                    <p class="text-slate-500 text-sm mb-6">Disponibilité confirmée en quelques minutes</p>
+                    <h2 class="text-xl font-bold mb-1" data-i18n="form.title">Réservez votre véhicule</h2>
+                    <p class="text-slate-500 text-sm mb-6" data-i18n="form.subtitle">Disponibilité confirmée en quelques minutes</p>
 
                     <form id="booking-form" class="space-y-4">
                         <div>
-                            <label for="lieu" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Lieu de prise en charge</label>
+                            <label for="lieu" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form.location">Lieu de prise en charge</label>
                             <select id="lieu" name="lieu" required class="input-field w-full rounded-xl px-4 py-3.5 text-sm appearance-none cursor-pointer">
-                                <option value="Meknès">Meknès — Centre-ville</option>
-                                <option value="Fès">Fès — Centre-ville</option>
-                                <option value="Aéroport Fès-Saïss">Fès — Aéroport Saïss</option>
-                                <option value="Gare Meknès">Meknès — Gare ONCF</option>
+                                <option value="meknes" data-i18n="opt.meknes">Meknès — Centre-ville</option>
+                                <option value="fes" data-i18n="opt.fes">Fès — Centre-ville</option>
+                                <option value="airport" data-i18n="opt.airport">Fès — Aéroport Saïss</option>
+                                <option value="gare" data-i18n="opt.gare">Meknès — Gare ONCF</option>
                             </select>
                         </div>
                         <div class="grid sm:grid-cols-2 gap-4">
                             <div>
-                                <label for="date-debut" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Date de début</label>
+                                <label for="date-debut" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form.date_start">Date de début</label>
                                 <input type="date" id="date-debut" name="date-debut" required class="input-field w-full rounded-xl px-4 py-3.5 text-sm">
                             </div>
                             <div>
-                                <label for="date-fin" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Date de fin</label>
+                                <label for="date-fin" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form.date_end">Date de fin</label>
                                 <input type="date" id="date-fin" name="date-fin" required class="input-field w-full rounded-xl px-4 py-3.5 text-sm">
                             </div>
                         </div>
                         <button type="submit" class="btn-amber w-full py-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 mt-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                            Rechercher
+                            <span data-i18n="form.search">Rechercher</span>
                         </button>
                     </form>
-                    <p class="text-slate-600 text-xs text-center mt-4">Confirmation instantanée via WhatsApp</p>
+                    <p class="text-slate-600 text-xs text-center mt-4" data-i18n="form.confirm">Confirmation instantanée via WhatsApp</p>
                 </div>
             </div>
         </div>
@@ -279,13 +317,13 @@
                 <div>
                     <span class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold tracking-widest uppercase">
                         <span class="w-6 h-px bg-amber-500"></span>
-                        Notre flotte
+                        <span data-i18n="fleet.eyebrow">Notre flotte</span>
                     </span>
-                    <h2 class="text-3xl sm:text-4xl font-black mt-3">Véhicules disponibles</h2>
-                    <p class="text-slate-400 mt-2 max-w-md">Entretenus avec soin, prêts pour vos routes marocaines</p>
+                    <h2 class="text-3xl sm:text-4xl font-black mt-3" data-i18n="fleet.title">Véhicules disponibles</h2>
+                    <p class="text-slate-400 mt-2 max-w-md" data-i18n="fleet.desc">Entretenus avec soin, prêts pour vos routes marocaines</p>
                 </div>
                 <a href="https://wa.me/212665173719?text=Bonjour%2C%20je%20souhaite%20voir%20toute%20votre%20flotte%20disponible." class="text-amber-500 text-sm font-semibold hover:text-amber-400 transition-colors flex items-center gap-2 shrink-0">
-                    Voir toute la flotte
+                    <span data-i18n="fleet.view_all">Voir toute la flotte</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </a>
             </div>
@@ -307,20 +345,20 @@
                     <div class="p-6">
                         <div class="flex items-start justify-between gap-3">
                             <div>
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-sky-400 bg-sky-400/10 px-2.5 py-1 rounded">Populaire</span>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-sky-400 bg-sky-400/10 px-2.5 py-1 rounded" data-i18n="fleet.popular">Populaire</span>
                                 <h3 class="text-xl font-bold mt-3">Renault Clio</h3>
                             </div>
                             <div class="text-right shrink-0">
                                 <p class="text-2xl font-black text-amber-500">350</p>
-                                <p class="text-slate-500 text-xs">DH / jour</p>
+                                <p class="text-slate-500 text-xs" data-i18n="fleet.price_unit">DH / jour</p>
                             </div>
                         </div>
-                        <p class="text-slate-400 text-xs mt-5 pt-5 border-t border-slate-800/80 text-center leading-relaxed">
+                        <p class="text-slate-400 text-xs mt-5 pt-5 border-t border-slate-800/80 text-center leading-relaxed" data-i18n="fleet.spec_clio">
                             ⛽ Diesel &nbsp;•&nbsp; ⚙️ Manuelle &nbsp;•&nbsp; 👤 5 Places
                         </p>
                         <a href="https://wa.me/212665173719?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20Renault%20Clio%20%C3%A0%20Mekn%C3%A8s%20ou%20F%C3%A8s." class="wa-btn flex items-center justify-center gap-2 text-white font-bold py-3 rounded-xl mt-5 text-sm">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
-                            Réserver
+                            <span data-i18n="fleet.book">Réserver</span>
                         </a>
                     </div>
                 </article>
@@ -340,20 +378,20 @@
                     <div class="p-6">
                         <div class="flex items-start justify-between gap-3">
                             <div>
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded">Économique</span>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded" data-i18n="fleet.economy">Économique</span>
                                 <h3 class="text-xl font-bold mt-3">Dacia Logan</h3>
                             </div>
                             <div class="text-right shrink-0">
                                 <p class="text-2xl font-black text-amber-500">300</p>
-                                <p class="text-slate-500 text-xs">DH / jour</p>
+                                <p class="text-slate-500 text-xs" data-i18n="fleet.price_unit">DH / jour</p>
                             </div>
                         </div>
-                        <p class="text-slate-400 text-xs mt-5 pt-5 border-t border-slate-800/80 text-center leading-relaxed">
+                        <p class="text-slate-400 text-xs mt-5 pt-5 border-t border-slate-800/80 text-center leading-relaxed" data-i18n="fleet.spec_logan">
                             ⛽ Diesel &nbsp;•&nbsp; ⚙️ Manuelle &nbsp;•&nbsp; 👤 5 Places
                         </p>
                         <a href="https://wa.me/212665173719?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20Dacia%20Logan%20%C3%A0%20Mekn%C3%A8s%20ou%20F%C3%A8s." class="wa-btn flex items-center justify-center gap-2 text-white font-bold py-3 rounded-xl mt-5 text-sm">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
-                            Réserver
+                            <span data-i18n="fleet.book">Réserver</span>
                         </a>
                     </div>
                 </article>
@@ -373,20 +411,20 @@
                     <div class="p-6">
                         <div class="flex items-start justify-between gap-3">
                             <div>
-                                <span class="text-[10px] font-bold uppercase tracking-widest text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded">SUV Luxury</span>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded" data-i18n="fleet.suv">SUV Luxury</span>
                                 <h3 class="text-xl font-bold mt-3">Volkswagen T-Roc</h3>
                             </div>
                             <div class="text-right shrink-0">
                                 <p class="text-2xl font-black text-amber-500">600</p>
-                                <p class="text-slate-500 text-xs">DH / jour</p>
+                                <p class="text-slate-500 text-xs" data-i18n="fleet.price_unit">DH / jour</p>
                             </div>
                         </div>
-                        <p class="text-slate-400 text-xs mt-5 pt-5 border-t border-slate-800/80 text-center leading-relaxed">
+                        <p class="text-slate-400 text-xs mt-5 pt-5 border-t border-slate-800/80 text-center leading-relaxed" data-i18n="fleet.spec_troc">
                             ⛽ Diesel &nbsp;•&nbsp; ⚙️ Automatique &nbsp;•&nbsp; 👤 5 Places
                         </p>
                         <a href="https://wa.me/212665173719?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20un%20Volkswagen%20T-Roc%20%C3%A0%20Mekn%C3%A8s%20ou%20F%C3%A8s." class="wa-btn flex items-center justify-center gap-2 text-white font-bold py-3 rounded-xl mt-5 text-sm">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
-                            Réserver
+                            <span data-i18n="fleet.book">Réserver</span>
                         </a>
                     </div>
                 </article>
@@ -401,16 +439,16 @@
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <span class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold tracking-widest uppercase justify-center">
                     <span class="w-6 h-px bg-amber-500"></span>
-                    ✨ Avis de nos clients
+                    <span data-i18n="testimonials.eyebrow">✨ Avis de nos clients</span>
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-black mt-3">Ils nous font confiance</h2>
-                <p class="text-slate-400 mt-3">Des centaines de voyageurs satisfaits à Meknès, Fès et à l'aéroport</p>
+                <h2 class="text-3xl sm:text-4xl font-black mt-3" data-i18n="testimonials.title">Ils nous font confiance</h2>
+                <p class="text-slate-400 mt-3" data-i18n="testimonials.desc">Des centaines de voyageurs satisfaits à Meknès, Fès et à l'aéroport</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                 <article class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col">
                     <p class="stars text-sm mb-4" aria-label="5 étoiles sur 5">⭐⭐⭐⭐⭐</p>
-                    <blockquote class="text-slate-300 text-sm leading-relaxed flex-1">
+                    <blockquote class="text-slate-300 text-sm leading-relaxed flex-1" data-i18n="testimonial1.text">
                         « Service impeccable à Meknès. La Clio était propre, récente et livrée à mon hôtel en moins d'une heure. Équipe réactive sur WhatsApp, je recommande sans hésiter. »
                     </blockquote>
                     <footer class="mt-6 pt-5 border-t border-slate-800/80 flex items-center gap-3">
@@ -424,14 +462,14 @@
                         >
                         <div>
                             <p class="font-semibold text-sm text-white">Youssef Benali</p>
-                            <p class="text-slate-500 text-xs mt-0.5">Meknès · Mai 2026</p>
+                            <p class="text-slate-500 text-xs mt-0.5" data-i18n="testimonial1.location">Meknès · Mai 2026</p>
                         </div>
                     </footer>
                 </article>
 
                 <article class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col">
                     <p class="stars text-sm mb-4" aria-label="5 étoiles sur 5">⭐⭐⭐⭐⭐</p>
-                    <blockquote class="text-slate-300 text-sm leading-relaxed flex-1">
+                    <blockquote class="text-slate-300 text-sm leading-relaxed flex-1" data-i18n="testimonial2.text">
                         « Location pour un week-end à Fès — tarif transparent, aucune mauvaise surprise. La Dacia Logan parfaite pour la médina et les routes alentour. Accueil chaleureux et professionnel. »
                     </blockquote>
                     <footer class="mt-6 pt-5 border-t border-slate-800/80 flex items-center gap-3">
@@ -445,14 +483,14 @@
                         >
                         <div>
                             <p class="font-semibold text-sm text-white">Sophie Amrani</p>
-                            <p class="text-slate-500 text-xs mt-0.5">Fès · Avril 2026</p>
+                            <p class="text-slate-500 text-xs mt-0.5" data-i18n="testimonial2.location">Fès · Avril 2026</p>
                         </div>
                     </footer>
                 </article>
 
                 <article class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col">
                     <p class="stars text-sm mb-4" aria-label="5 étoiles sur 5">⭐⭐⭐⭐⭐</p>
-                    <blockquote class="text-slate-300 text-sm leading-relaxed flex-1">
+                    <blockquote class="text-slate-300 text-sm leading-relaxed flex-1" data-i18n="testimonial3.text">
                         « Atterrissage à Fès-Saïss : la voiture m'attendait devant le terminal. Livraison gratuite, formalités rapides. Le T-Roc était un vrai plaisir pour explorer le Rif. Top ! »
                     </blockquote>
                     <footer class="mt-6 pt-5 border-t border-slate-800/80 flex items-center gap-3">
@@ -466,7 +504,7 @@
                         >
                         <div>
                             <p class="font-semibold text-sm text-white">Marc Lefèvre</p>
-                            <p class="text-slate-500 text-xs mt-0.5">Aéroport Fès-Saïss · Mars 2026</p>
+                            <p class="text-slate-500 text-xs mt-0.5" data-i18n="testimonial3.location">Aéroport Fès-Saïss · Mars 2026</p>
                         </div>
                     </footer>
                 </article>
@@ -480,49 +518,49 @@
             <div class="text-center mb-12">
                 <span class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold tracking-widest uppercase justify-center">
                     <span class="w-6 h-px bg-amber-500"></span>
-                    🙋 Questions Fréquentes
+                    <span data-i18n="faq.eyebrow">🙋 Questions Fréquentes</span>
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-black mt-3">Tout ce qu'il faut savoir</h2>
-                <p class="text-slate-400 mt-3">Réponses claires pour réserver en toute sérénité</p>
+                <h2 class="text-3xl sm:text-4xl font-black mt-3" data-i18n="faq.title">Tout ce qu'il faut savoir</h2>
+                <p class="text-slate-400 mt-3" data-i18n="faq.desc">Réponses claires pour réserver en toute sérénité</p>
             </div>
 
             <div class="space-y-3">
                 <details class="faq-item group">
                     <summary>
-                        Comment réserver une voiture ?
+                        <span data-i18n="faq.q1">Comment réserver une voiture ?</span>
                         <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
-                    <p class="faq-answer">
+                    <p class="faq-answer" data-i18n-html="faq.a1">
                         Remplissez le formulaire de réservation en haut de page ou contactez-nous directement sur WhatsApp au <strong class="text-slate-300">+212 665 173 719</strong>. Indiquez vos dates, le lieu de prise en charge et le véhicule souhaité — nous vous confirmons la disponibilité en quelques minutes, sans engagement.
                     </p>
                 </details>
 
                 <details class="faq-item group">
                     <summary>
-                        Quels sont les documents requis ?
+                        <span data-i18n="faq.q2">Quels sont les documents requis ?</span>
                         <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
-                    <p class="faq-answer">
+                    <p class="faq-answer" data-i18n-html="faq.a2">
                         Pour récupérer votre véhicule, munissez-vous d'un <strong class="text-slate-300">permis de conduire valide</strong> (depuis au moins 1 an) et d'une pièce d'identité officielle : <strong class="text-slate-300">CIN marocaine</strong> ou <strong class="text-slate-300">passeport</strong> pour les visiteurs étrangers.
                     </p>
                 </details>
 
                 <details class="faq-item group">
                     <summary>
-                        Proposez-vous la livraison à l'aéroport ?
+                        <span data-i18n="faq.q3">Proposez-vous la livraison à l'aéroport ?</span>
                         <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
-                    <p class="faq-answer">
+                    <p class="faq-answer" data-i18n-html="faq.a3">
                         Oui ! Nous assurons la <strong class="text-slate-300">livraison gratuite</strong> à l'<strong class="text-slate-300">aéroport Fès-Saïss</strong>, ainsi qu'en centre-ville de Fès et Meknès. Précisez votre numéro de vol lors de la réservation — votre véhicule vous attendra à votre arrivée.
                     </p>
                 </details>
 
                 <details class="faq-item group">
                     <summary>
-                        Quels sont les modes de paiement acceptés ?
+                        <span data-i18n="faq.q4">Quels sont les modes de paiement acceptés ?</span>
                         <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </summary>
-                    <p class="faq-answer">
+                    <p class="faq-answer" data-i18n-html="faq.a4">
                         Le paiement s'effectue <strong class="text-slate-300">à la livraison</strong> du véhicule. Nous acceptons les espèces (<strong class="text-slate-300">cash</strong>) et le paiement par carte via notre <strong class="text-slate-300">TPE mobile</strong>. Aucun prépaiement en ligne n'est requis.
                     </p>
                 </details>
@@ -536,39 +574,39 @@
             <div class="text-center max-w-2xl mx-auto mb-14">
                 <span class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold tracking-widest uppercase justify-center">
                     <span class="w-6 h-px bg-amber-500"></span>
-                    Nos services
+                    <span data-i18n="features.eyebrow">Nos services</span>
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-black mt-3">Pourquoi Auto Rent ?</h2>
-                <p class="text-slate-400 mt-3">Une expérience premium, pensée pour le Maroc</p>
+                <h2 class="text-3xl sm:text-4xl font-black mt-3" data-i18n="features.title">Pourquoi Auto Rent ?</h2>
+                <p class="text-slate-400 mt-3" data-i18n="features.desc">Une expérience premium, pensée pour le Maroc</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 <div class="glass-card rounded-2xl p-6 text-center">
                     <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
                     </div>
-                    <h3 class="font-bold text-sm mb-2">Livraison aéroport</h3>
-                    <p class="text-slate-500 text-xs leading-relaxed">Prise en charge à Fès-Saïss ou en centre-ville</p>
+                    <h3 class="font-bold text-sm mb-2" data-i18n="feat1.title">Livraison aéroport</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed" data-i18n="feat1.desc">Prise en charge à Fès-Saïss ou en centre-ville</p>
                 </div>
                 <div class="glass-card rounded-2xl p-6 text-center">
                     <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
-                    <h3 class="font-bold text-sm mb-2">Assurance incluse</h3>
-                    <p class="text-slate-500 text-xs leading-relaxed">Tous risques pour rouler l'esprit tranquille</p>
+                    <h3 class="font-bold text-sm mb-2" data-i18n="feat2.title">Assurance incluse</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed" data-i18n="feat2.desc">Tous risques pour rouler l'esprit tranquille</p>
                 </div>
                 <div class="glass-card rounded-2xl p-6 text-center">
                     <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
-                    <h3 class="font-bold text-sm mb-2">Sans frais cachés</h3>
-                    <p class="text-slate-500 text-xs leading-relaxed">Le prix affiché est le prix final</p>
+                    <h3 class="font-bold text-sm mb-2" data-i18n="feat3.title">Sans frais cachés</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed" data-i18n="feat3.desc">Le prix affiché est le prix final</p>
                 </div>
                 <div class="glass-card rounded-2xl p-6 text-center">
                     <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                     </div>
-                    <h3 class="font-bold text-sm mb-2">Support 24/7</h3>
-                    <p class="text-slate-500 text-xs leading-relaxed">Assistance WhatsApp à toute heure</p>
+                    <h3 class="font-bold text-sm mb-2" data-i18n="feat4.title">Support 24/7</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed" data-i18n="feat4.desc">Assistance WhatsApp à toute heure</p>
                 </div>
             </div>
         </div>
@@ -577,8 +615,8 @@
     <!-- CTA -->
     <section id="contact" class="py-20 px-4 sm:px-6">
         <div class="max-w-4xl mx-auto glass rounded-3xl p-10 sm:p-14 text-center">
-            <h2 class="text-3xl sm:text-4xl font-black">Prêt à partir ?</h2>
-            <p class="text-slate-400 mt-4 max-w-md mx-auto">Contactez-nous sur WhatsApp et recevez une confirmation en moins d'une minute.</p>
+            <h2 class="text-3xl sm:text-4xl font-black" data-i18n="cta.title">Prêt à partir ?</h2>
+            <p class="text-slate-400 mt-4 max-w-md mx-auto" data-i18n="cta.desc">Contactez-nous sur WhatsApp et recevez une confirmation en moins d'une minute.</p>
             <a href="https://wa.me/212665173719?text=Bonjour%2C%20je%20souhaite%20louer%20une%20voiture%20%C3%A0%20Mekn%C3%A8s%20ou%20F%C3%A8s." class="wa-btn inline-flex items-center justify-center gap-3 text-white font-bold px-10 py-4 rounded-xl mt-8 text-base">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
                 +212 665 173 719
@@ -592,31 +630,305 @@
             <div class="flex items-center gap-3">
                 <p class="text-lg font-black text-white">AUTO<span class="text-amber-500">RENT</span></p>
             </div>
-            <p>Meknès & Fès · Maroc 🇲🇦</p>
-            <p>© <script>document.write(new Date().getFullYear());</script> Auto Rent — Tous droits réservés</p>
+            <p data-i18n="footer.location">Meknès & Fès · Maroc 🇲🇦</p>
+            <p>© <script>document.write(new Date().getFullYear());</script> Auto Rent — <span data-i18n="footer.rights">Tous droits réservés</span></p>
         </div>
     </footer>
 
     <!-- WhatsApp floating -->
-    <a href="https://wa.me/212665173719" class="fixed bottom-6 right-6 wa-btn w-14 h-14 rounded-full flex items-center justify-center z-50 hover:scale-110" aria-label="WhatsApp">
+    <a href="https://wa.me/212665173719" class="wa-float wa-btn fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center z-50 hover:scale-110" aria-label="WhatsApp">
         <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
     </a>
 
     <script>
         const WA = '212665173719';
 
+        const translations = {
+            fr: {
+                'meta.title': 'Auto Rent | Location Premium — Meknès & Fès',
+                'meta.description': 'Auto Rent — Location de voitures premium à Meknès et Fès. Réservation instantanée, livraison aéroport, flotte récente.',
+                'nav.cities': 'Meknès · Fès',
+                'nav.book': 'Réserver',
+                'nav.fleet': 'Notre flotte',
+                'nav.features': 'Services',
+                'nav.contact': 'Contact',
+                'nav.whatsapp': 'WhatsApp',
+                'hero.eyebrow': 'Location premium · Maroc',
+                'hero.title1': 'Explorez le Maroc',
+                'hero.title2': 'en toute élégance',
+                'hero.desc': 'Meknès, Fès et au-delà — flotte récente, tarifs transparents et livraison gratuite à l\'aéroport. Réservez en quelques clics.',
+                'hero.stat1': 'Clients satisfaits',
+                'hero.stat2': 'Assistance',
+                'hero.stat3': 'Note moyenne',
+                'form.title': 'Réservez votre véhicule',
+                'form.subtitle': 'Disponibilité confirmée en quelques minutes',
+                'form.location': 'Lieu de prise en charge',
+                'form.date_start': 'Date de début',
+                'form.date_end': 'Date de fin',
+                'form.search': 'Rechercher',
+                'form.confirm': 'Confirmation instantanée via WhatsApp',
+                'opt.meknes': 'Meknès — Centre-ville',
+                'opt.fes': 'Fès — Centre-ville',
+                'opt.airport': 'Fès — Aéroport Saïss',
+                'opt.gare': 'Meknès — Gare ONCF',
+                'fleet.eyebrow': 'Notre flotte',
+                'fleet.title': 'Véhicules disponibles',
+                'fleet.desc': 'Entretenus avec soin, prêts pour vos routes marocaines',
+                'fleet.view_all': 'Voir toute la flotte',
+                'fleet.popular': 'Populaire',
+                'fleet.economy': 'Économique',
+                'fleet.suv': 'SUV Luxury',
+                'fleet.price_unit': 'DH / jour',
+                'fleet.spec_clio': '⛽ Diesel • ⚙️ Manuelle • 👤 5 Places',
+                'fleet.spec_logan': '⛽ Diesel • ⚙️ Manuelle • 👤 5 Places',
+                'fleet.spec_troc': '⛽ Diesel • ⚙️ Automatique • 👤 5 Places',
+                'fleet.book': 'Réserver',
+                'testimonials.eyebrow': '✨ Avis de nos clients',
+                'testimonials.title': 'Ils nous font confiance',
+                'testimonials.desc': 'Des centaines de voyageurs satisfaits à Meknès, Fès et à l\'aéroport',
+                'testimonial1.text': '« Service impeccable à Meknès. La Clio était propre, récente et livrée à mon hôtel en moins d\'une heure. Équipe réactive sur WhatsApp, je recommande sans hésiter. »',
+                'testimonial1.location': 'Meknès · Mai 2026',
+                'testimonial2.text': '« Location pour un week-end à Fès — tarif transparent, aucune mauvaise surprise. La Dacia Logan parfaite pour la médina et les routes alentour. Accueil chaleureux et professionnel. »',
+                'testimonial2.location': 'Fès · Avril 2026',
+                'testimonial3.text': '« Atterrissage à Fès-Saïss : la voiture m\'attendait devant le terminal. Livraison gratuite, formalités rapides. Le T-Roc était un vrai plaisir pour explorer le Rif. Top ! »',
+                'testimonial3.location': 'Aéroport Fès-Saïss · Mars 2026',
+                'faq.eyebrow': '🙋 Questions Fréquentes',
+                'faq.title': 'Tout ce qu\'il faut savoir',
+                'faq.desc': 'Réponses claires pour réserver en toute sérénité',
+                'faq.q1': 'Comment réserver une voiture ?',
+                'faq.a1': 'Remplissez le formulaire de réservation en haut de page ou contactez-nous directement sur WhatsApp au <strong class="text-slate-300">+212 665 173 719</strong>. Indiquez vos dates, le lieu de prise en charge et le véhicule souhaité — nous vous confirmons la disponibilité en quelques minutes, sans engagement.',
+                'faq.q2': 'Quels sont les documents requis ?',
+                'faq.a2': 'Pour récupérer votre véhicule, munissez-vous d\'un <strong class="text-slate-300">permis de conduire valide</strong> (depuis au moins 1 an) et d\'une pièce d\'identité officielle : <strong class="text-slate-300">CIN marocaine</strong> ou <strong class="text-slate-300">passeport</strong> pour les visiteurs étrangers.',
+                'faq.q3': 'Proposez-vous la livraison à l\'aéroport ?',
+                'faq.a3': 'Oui ! Nous assurons la <strong class="text-slate-300">livraison gratuite</strong> à l\'<strong class="text-slate-300">aéroport Fès-Saïss</strong>, ainsi qu\'en centre-ville de Fès et Meknès. Précisez votre numéro de vol lors de la réservation — votre véhicule vous attendra à votre arrivée.',
+                'faq.q4': 'Quels sont les modes de paiement acceptés ?',
+                'faq.a4': 'Le paiement s\'effectue <strong class="text-slate-300">à la livraison</strong> du véhicule. Nous acceptons les espèces (<strong class="text-slate-300">cash</strong>) et le paiement par carte via notre <strong class="text-slate-300">TPE mobile</strong>. Aucun prépaiement en ligne n\'est requis.',
+                'features.eyebrow': 'Nos services',
+                'features.title': 'Pourquoi Auto Rent ?',
+                'features.desc': 'Une expérience premium, pensée pour le Maroc',
+                'feat1.title': 'Livraison aéroport',
+                'feat1.desc': 'Prise en charge à Fès-Saïss ou en centre-ville',
+                'feat2.title': 'Assurance incluse',
+                'feat2.desc': 'Tous risques pour rouler l\'esprit tranquille',
+                'feat3.title': 'Sans frais cachés',
+                'feat3.desc': 'Le prix affiché est le prix final',
+                'feat4.title': 'Support 24/7',
+                'feat4.desc': 'Assistance WhatsApp à toute heure',
+                'cta.title': 'Prêt à partir ?',
+                'cta.desc': 'Contactez-nous sur WhatsApp et recevez une confirmation en moins d\'une minute.',
+                'footer.location': 'Meknès & Fès · Maroc 🇲🇦',
+                'footer.rights': 'Tous droits réservés',
+                'alert.date_invalid': 'La date de fin doit être après la date de début.'
+            },
+            en: {
+                'meta.title': 'Auto Rent | Premium Car Rental — Meknes & Fez',
+                'meta.description': 'Auto Rent — Premium car rental in Meknes and Fez, Morocco. Instant booking, airport delivery, modern fleet.',
+                'nav.cities': 'Meknes · Fez',
+                'nav.book': 'Book',
+                'nav.fleet': 'Our Fleet',
+                'nav.features': 'Services',
+                'nav.contact': 'Contact',
+                'nav.whatsapp': 'WhatsApp',
+                'hero.eyebrow': 'Premium rental · Morocco',
+                'hero.title1': 'Explore Morocco',
+                'hero.title2': 'in True Elegance',
+                'hero.desc': 'Meknes, Fez and beyond — modern fleet, transparent pricing and free airport delivery. Book in just a few clicks.',
+                'hero.stat1': 'Happy clients',
+                'hero.stat2': 'Support',
+                'hero.stat3': 'Average rating',
+                'form.title': 'Book your vehicle',
+                'form.subtitle': 'Availability confirmed within minutes',
+                'form.location': 'Pick-up location',
+                'form.date_start': 'Start date',
+                'form.date_end': 'End date',
+                'form.search': 'Search',
+                'form.confirm': 'Instant confirmation via WhatsApp',
+                'opt.meknes': 'Meknes — City centre',
+                'opt.fes': 'Fez — City centre',
+                'opt.airport': 'Fez — Saiss Airport',
+                'opt.gare': 'Meknes — ONCF Station',
+                'fleet.eyebrow': 'Our fleet',
+                'fleet.title': 'Available vehicles',
+                'fleet.desc': 'Meticulously maintained, ready for Moroccan roads',
+                'fleet.view_all': 'View full fleet',
+                'fleet.popular': 'Popular',
+                'fleet.economy': 'Economy',
+                'fleet.suv': 'SUV Luxury',
+                'fleet.price_unit': 'DH / day',
+                'fleet.spec_clio': '⛽ Diesel • ⚙️ Manual • 👤 5 Seats',
+                'fleet.spec_logan': '⛽ Diesel • ⚙️ Manual • 👤 5 Seats',
+                'fleet.spec_troc': '⛽ Diesel • ⚙️ Automatic • 👤 5 Seats',
+                'fleet.book': 'Book now',
+                'testimonials.eyebrow': '✨ Customer reviews',
+                'testimonials.title': 'Trusted by travellers',
+                'testimonials.desc': 'Hundreds of satisfied customers in Meknes, Fez and at the airport',
+                'testimonial1.text': '"Impeccable service in Meknes. The Clio was clean, recent and delivered to my hotel in under an hour. Responsive WhatsApp team — highly recommended."',
+                'testimonial1.location': 'Meknes · May 2026',
+                'testimonial2.text': '"Weekend rental in Fez — transparent pricing, no surprises. The Dacia Logan was perfect for the medina and surrounding roads. Warm, professional welcome."',
+                'testimonial2.location': 'Fez · April 2026',
+                'testimonial3.text': '"Landed at Fez-Saiss: the car was waiting at the terminal. Free delivery, quick paperwork. The T-Roc was a joy for exploring the Rif. Excellent!"',
+                'testimonial3.location': 'Fez-Saiss Airport · March 2026',
+                'faq.eyebrow': '🙋 Frequently Asked Questions',
+                'faq.title': 'Everything you need to know',
+                'faq.desc': 'Clear answers to book with confidence',
+                'faq.q1': 'How do I book a car?',
+                'faq.a1': 'Fill in the booking form at the top of the page or contact us directly on WhatsApp at <strong class="text-slate-300">+212 665 173 719</strong>. Share your dates, pick-up location and preferred vehicle — we confirm availability within minutes, with no obligation.',
+                'faq.q2': 'What documents are required?',
+                'faq.a2': 'To collect your vehicle, bring a <strong class="text-slate-300">valid driving licence</strong> (held for at least 1 year) and official ID: <strong class="text-slate-300">Moroccan CIN</strong> or <strong class="text-slate-300">passport</strong> for foreign visitors.',
+                'faq.q3': 'Do you offer airport delivery?',
+                'faq.a3': 'Yes! We provide <strong class="text-slate-300">free delivery</strong> to <strong class="text-slate-300">Fez-Saiss Airport</strong>, as well as downtown Fez and Meknes. Include your flight number when booking — your car will be waiting on arrival.',
+                'faq.q4': 'What payment methods do you accept?',
+                'faq.a4': 'Payment is made <strong class="text-slate-300">on delivery</strong>. We accept <strong class="text-slate-300">cash</strong> and card payment via our <strong class="text-slate-300">mobile POS</strong>. No online prepayment required.',
+                'features.eyebrow': 'Our services',
+                'features.title': 'Why Auto Rent?',
+                'features.desc': 'A premium experience, designed for Morocco',
+                'feat1.title': 'Airport delivery',
+                'feat1.desc': 'Pick-up at Fez-Saiss or city centre',
+                'feat2.title': 'Insurance included',
+                'feat2.desc': 'Full coverage for peace of mind',
+                'feat3.title': 'No hidden fees',
+                'feat3.desc': 'The price shown is the final price',
+                'feat4.title': '24/7 support',
+                'feat4.desc': 'WhatsApp assistance anytime',
+                'cta.title': 'Ready to go?',
+                'cta.desc': 'Contact us on WhatsApp and get confirmation in under a minute.',
+                'footer.location': 'Meknes & Fez · Morocco 🇲🇦',
+                'footer.rights': 'All rights reserved',
+                'alert.date_invalid': 'End date must be after start date.'
+            },
+            ar: {
+                'meta.title': 'أوتو رينت | تأجير سيارات فاخرة — مكناس وفاس',
+                'meta.description': 'أوتو رينت — تأجير سيارات فاخرة في مكناس وفاس. حجز فوري، توصيل للمطار، أسطول حديث.',
+                'nav.cities': 'مكناس · فاس',
+                'nav.book': 'احجز',
+                'nav.fleet': 'أسطولنا',
+                'nav.features': 'خدماتنا',
+                'nav.contact': 'اتصل',
+                'nav.whatsapp': 'واتساب',
+                'hero.eyebrow': 'تأجير فاخر · المغرب',
+                'hero.title1': 'استكشف المغرب',
+                'hero.title2': 'بكل فخامة',
+                'hero.desc': 'مكناس، فاس — أسطول حديث، أسعار شفافة وتوصيل مجاني للمطار. احجز في بضع نقرات.',
+                'hero.stat1': 'عملاء راضون',
+                'hero.stat2': 'مساعدة',
+                'hero.stat3': 'التقييم',
+                'form.title': 'احجز سيارتك',
+                'form.subtitle': 'تأكيد التوفر خلال دقائق',
+                'form.location': 'مكان الاستلام',
+                'form.date_start': 'تاريخ البداية',
+                'form.date_end': 'تاريخ النهاية',
+                'form.search': 'بحث',
+                'form.confirm': 'تأكيد فوري عبر واتساب',
+                'opt.meknes': 'مكناس — وسط المدينة',
+                'opt.fes': 'فاس — وسط المدينة',
+                'opt.airport': 'فاس — مطار سايس',
+                'opt.gare': 'مكناس — محطة ONCF',
+                'fleet.eyebrow': 'أسطولنا',
+                'fleet.title': 'السيارات المتاحة',
+                'fleet.desc': 'صيانة دقيقة، جاهزة لطرق المغرب',
+                'fleet.view_all': 'عرض الأسطول كاملاً',
+                'fleet.popular': 'شائعة',
+                'fleet.economy': 'اقتصادية',
+                'fleet.suv': 'SUV فاخرة',
+                'fleet.price_unit': 'درهم / يوم',
+                'fleet.spec_clio': '⛽ ديزل • ⚙️ يدوية • 👤 5 مقاعد',
+                'fleet.spec_logan': '⛽ ديزل • ⚙️ يدوية • 👤 5 مقاعد',
+                'fleet.spec_troc': '⛽ ديزل • ⚙️ أوتوماتيك • 👤 5 مقاعد',
+                'fleet.book': 'احجز',
+                'testimonials.eyebrow': '✨ آراء عملائنا',
+                'testimonials.title': 'يثقون بنا',
+                'testimonials.desc': 'مئات المسافرين الراضين في مكناس وفاس والمطار',
+                'testimonial1.text': '« خدمة ممتازة في مكناس. كانت Clio نظيفة وحديثة ووُصلت إلى فندقي في أقل من ساعة. فريق واتساب سريع الاستجابة، أنصح بشدة. »',
+                'testimonial1.location': 'مكناس · ماي 2026',
+                'testimonial2.text': '« تأجير لعطلة نهاية الأسبوع في فاس — سعر شفاف دون مفاجآت. Dacia Logan مثالية للمدينة القديمة والطرق المحيطة. استقبال دافئ ومحترف. »',
+                'testimonial2.location': 'فاس · أبريل 2026',
+                'testimonial3.text': '« هبطت في مطار فاس سايس: السيارة كانت تنتظر أمام المحطة. توصيل مجاني، إجراءات سريعة. T-Roc متعة حقيقية لاستكشاف الريف. رائع! »',
+                'testimonial3.location': 'مطار فاس سايس · مارس 2026',
+                'faq.eyebrow': '🙋 الأسئلة الشائعة',
+                'faq.title': 'كل ما تحتاج معرفته',
+                'faq.desc': 'إجابات واضحة للحجز بثقة',
+                'faq.q1': 'كيف أحجز سيارة؟',
+                'faq.a1': 'املأ نموذج الحجز أعلى الصفحة أو تواصل معنا مباشرة على واتساب <strong class="text-slate-300">+212 665 173 719</strong>. حدّد التواريخ ومكان الاستلام والسيارة المطلوبة — نؤكد التوفر خلال دقائق دون التزام.',
+                'faq.q2': 'ما الوثائق المطلوبة؟',
+                'faq.a2': 'لاستلام سيارتك، أحضر <strong class="text-slate-300">رخصة قيادة سارية</strong> (منذ سنة على الأقل) ووثيقة هوية رسمية: <strong class="text-slate-300">البطاقة الوطنية</strong> أو <strong class="text-slate-300">جواز السفر</strong> للزوار الأجانب.',
+                'faq.q3': 'هل تقدمون التوصيل للمطار؟',
+                'faq.a3': 'نعم! نوفر <strong class="text-slate-300">توصيلاً مجانياً</strong> إلى <strong class="text-slate-300">مطار فاس سايس</strong>، وكذلك وسط فاس ومكناس. أذكر رقم رحلتك عند الحجز — ستنتظرك سيارتك عند الوصول.',
+                'faq.q4': 'ما طرق الدفع المقبولة؟',
+                'faq.a4': 'الدفع يتم <strong class="text-slate-300">عند التسليم</strong>. نقبل النقد (<strong class="text-slate-300">cash</strong>) والبطاقة عبر <strong class="text-slate-300">جهاز الدفع المحمول</strong>. لا يلزم دفع مسبق عبر الإنترنت.',
+                'features.eyebrow': 'خدماتنا',
+                'features.title': 'لماذا أوتو رينت؟',
+                'features.desc': 'تجربة فاخرة، مصممة للمغرب',
+                'feat1.title': 'توصيل المطار',
+                'feat1.desc': 'استلام في مطار فاس سايس أو وسط المدينة',
+                'feat2.title': 'تأمين شامل',
+                'feat2.desc': 'تغطية كاملة للقيادة براحة البال',
+                'feat3.title': 'بدون رسوم خفية',
+                'feat3.desc': 'السعر المعروض هو السعر النهائي',
+                'feat4.title': 'دعم 24/7',
+                'feat4.desc': 'مساعدة واتساب على مدار الساعة',
+                'cta.title': 'مستعد للانطلاق؟',
+                'cta.desc': 'تواصل معنا على واتساب واحصل على تأكيد في أقل من دقيقة.',
+                'footer.location': 'مكناس وفاس · المغرب 🇲🇦',
+                'footer.rights': 'جميع الحقوق محفوظة',
+                'alert.date_invalid': 'يجب أن يكون تاريخ النهاية بعد تاريخ البداية.'
+            }
+        };
+
+        let currentLang = localStorage.getItem('autorent-lang') || 'fr';
+
+        function t(key) {
+            return translations[currentLang][key] || translations.fr[key] || key;
+        }
+
+        function setLanguage(lang) {
+            if (!translations[lang]) return;
+            currentLang = lang;
+            localStorage.setItem('autorent-lang', lang);
+
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.body.classList.toggle('lang-ar', lang === 'ar');
+
+            document.title = t('meta.title');
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.content = t('meta.description');
+
+            document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                el.textContent = t(el.dataset.i18n);
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+                el.innerHTML = t(el.dataset.i18nHtml);
+            });
+            document.querySelectorAll('option[data-i18n]').forEach(function (opt) {
+                opt.textContent = t(opt.dataset.i18n);
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(function (btn) {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+
+        setLanguage(currentLang);
+
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         let menuOpen = false;
 
-        menuBtn.addEventListener('click', () => {
+        menuBtn.addEventListener('click', function () {
             menuOpen = !menuOpen;
-            mobileMenu.style.maxHeight = menuOpen ? '320px' : '0';
+            mobileMenu.style.maxHeight = menuOpen ? '380px' : '0';
             mobileMenu.style.opacity = menuOpen ? '1' : '0';
         });
 
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+        mobileMenu.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
                 menuOpen = false;
                 mobileMenu.style.maxHeight = '0';
                 mobileMenu.style.opacity = '0';
@@ -629,26 +941,39 @@
         dateDebut.min = today;
         dateFin.min = today;
 
-        dateDebut.addEventListener('change', () => {
+        dateDebut.addEventListener('change', function () {
             dateFin.min = dateDebut.value || today;
             if (dateFin.value && dateFin.value < dateDebut.value) dateFin.value = dateDebut.value;
         });
 
-        document.getElementById('booking-form').addEventListener('submit', (e) => {
+        function formatDate(d) {
+            const locale = currentLang === 'ar' ? 'ar-MA' : currentLang === 'en' ? 'en-GB' : 'fr-FR';
+            return new Date(d + 'T00:00:00').toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+
+        function buildWhatsAppMessage(lieuKey, debut, fin) {
+            const lieu = t('opt.' + lieuKey);
+            if (currentLang === 'en') {
+                return 'Hello, I would like to rent a car.\n\n📍 Location: ' + lieu + '\n📅 From: ' + formatDate(debut) + '\n📅 To: ' + formatDate(fin) + '\n\nPlease confirm availability.';
+            }
+            if (currentLang === 'ar') {
+                return 'مرحباً، أود استئجار سيارة.\n\n📍 المكان: ' + lieu + '\n📅 من: ' + formatDate(debut) + '\n📅 إلى: ' + formatDate(fin) + '\n\nيرجى تأكيد التوفر.';
+            }
+            return 'Bonjour, je souhaite louer une voiture.\n\n📍 Lieu : ' + lieu + '\n📅 Du : ' + formatDate(debut) + '\n📅 Au : ' + formatDate(fin) + '\n\nMerci de me confirmer la disponibilité.';
+        }
+
+        document.getElementById('booking-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            const lieu = document.getElementById('lieu').value;
+            const lieuKey = document.getElementById('lieu').value;
             const debut = document.getElementById('date-debut').value;
             const fin = document.getElementById('date-fin').value;
 
             if (fin < debut) {
-                alert('La date de fin doit être après la date de début.');
+                alert(t('alert.date_invalid'));
                 return;
             }
 
-            const fmt = (d) => new Date(d + 'T00:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
-            const msg = `Bonjour, je souhaite louer une voiture.\n\n📍 Lieu : ${lieu}\n📅 Du : ${fmt(debut)}\n📅 Au : ${fmt(fin)}\n\nMerci de me confirmer la disponibilité.`;
-
-            window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(buildWhatsAppMessage(lieuKey, debut, fin)), '_blank');
         });
     </script>
 </body>
