@@ -203,6 +203,61 @@
             color: #fbbf24;
         }
         .social-link svg { width: 1.35rem; height: 1.35rem; }
+
+        .hours-card {
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 1rem;
+            padding: 1.5rem 1.75rem;
+        }
+        .hours-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.375rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 1.25rem;
+        }
+        .hours-status--open {
+            color: #4ade80;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.25);
+        }
+        .hours-status--closed {
+            color: #f87171;
+            background: rgba(248, 113, 113, 0.1);
+            border: 1px solid rgba(248, 113, 113, 0.25);
+        }
+        .hours-status-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 9999px;
+            background: currentColor;
+            animation: hours-pulse 2s ease-in-out infinite;
+        }
+        .hours-status--closed .hours-status-dot { animation: none; }
+        @keyframes hours-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.45; }
+        }
+        .hours-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            font-size: 0.8125rem;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.35);
+        }
+        .hours-row:last-child { border-bottom: none; }
+        .hours-row-day { color: #cbd5e1; font-weight: 500; }
+        .hours-row-time { color: #94a3b8; font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .hours-row--today .hours-row-day { color: #f59e0b; font-weight: 700; }
+        .hours-row--today .hours-row-time { color: #fbbf24; }
     </style>
 </head>
 <body class="bg-slate-950 text-white antialiased hero-glow min-h-screen">
@@ -665,12 +720,65 @@
 
     <!-- Footer -->
     <footer class="border-t border-slate-800/60 py-12 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-            <div class="flex items-center gap-3">
-                <p class="text-lg font-black text-white">AUTO<span class="text-amber-500">RENT</span></p>
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12 items-start mb-10">
+                <div class="text-center md:text-start">
+                    <p class="text-lg font-black text-white">AUTO<span class="text-amber-500">RENT</span></p>
+                    <p class="text-slate-500 text-sm mt-2" data-i18n="footer.location">Meknès & Fès · Maroc 🇲🇦</p>
+                </div>
+
+                <div id="business-hours" class="hours-card w-full max-w-md mx-auto md:max-w-none">
+                    <div class="flex items-center justify-between gap-3 mb-1">
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span data-i18n="hours.title">Horaires</span>
+                        </h3>
+                    </div>
+                    <div id="hours-status" class="hours-status hours-status--open" role="status">
+                        <span class="hours-status-dot" aria-hidden="true"></span>
+                        <span id="hours-status-text" data-i18n="hours.status_open">Actuellement ouvert</span>
+                    </div>
+                    <div class="hours-schedule">
+                        <div class="hours-row" data-day="1">
+                            <span class="hours-row-day" data-i18n="hours.mon">Lundi</span>
+                            <span class="hours-row-time" data-i18n="hours.time_weekday">09:00 - 21:00</span>
+                        </div>
+                        <div class="hours-row" data-day="2">
+                            <span class="hours-row-day" data-i18n="hours.tue">Mardi</span>
+                            <span class="hours-row-time" data-i18n="hours.time_weekday">09:00 - 21:00</span>
+                        </div>
+                        <div class="hours-row" data-day="3">
+                            <span class="hours-row-day" data-i18n="hours.wed">Mercredi</span>
+                            <span class="hours-row-time" data-i18n="hours.time_weekday">09:00 - 21:00</span>
+                        </div>
+                        <div class="hours-row" data-day="4">
+                            <span class="hours-row-day" data-i18n="hours.thu">Jeudi</span>
+                            <span class="hours-row-time" data-i18n="hours.time_weekday">09:00 - 21:00</span>
+                        </div>
+                        <div class="hours-row" data-day="5">
+                            <span class="hours-row-day" data-i18n="hours.fri">Vendredi</span>
+                            <span class="hours-row-time" data-i18n="hours.time_weekday">09:00 - 21:00</span>
+                        </div>
+                        <div class="hours-row" data-day="6">
+                            <span class="hours-row-day" data-i18n="hours.sat">Samedi</span>
+                            <span class="hours-row-time" data-i18n="hours.time_weekday">09:00 - 21:00</span>
+                        </div>
+                        <div class="hours-row" data-day="0">
+                            <span class="hours-row-day" data-i18n="hours.sun">Dimanche</span>
+                            <span class="hours-row-time" data-i18n="hours.time_sunday">09:00 - 18:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center md:text-end text-sm text-slate-500">
+                    <p class="text-amber-500 font-semibold mb-1" data-i18n="hours.support_note">Assistance WhatsApp 24/7</p>
+                    <p>+212 665 173 719</p>
+                </div>
             </div>
-            <p data-i18n="footer.location">Meknès & Fès · Maroc 🇲🇦</p>
-            <p>© <script>document.write(new Date().getFullYear());</script> Auto Rent — <span data-i18n="footer.rights">Tous droits réservés</span></p>
+
+            <div class="border-t border-slate-800/60 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-slate-500 text-center sm:text-start">
+                <p>© <script>document.write(new Date().getFullYear());</script> Auto Rent — <span data-i18n="footer.rights">Tous droits réservés</span></p>
+            </div>
         </div>
     </footer>
 
@@ -759,6 +867,19 @@
                 'footer.rights': 'Tous droits réservés',
                 'social.eyebrow': 'Restez connectés',
                 'social.title': 'Suivez-nous',
+                'hours.title': 'Horaires',
+                'hours.status_open': 'Actuellement ouvert',
+                'hours.status_closed': 'Fermé',
+                'hours.mon': 'Lundi',
+                'hours.tue': 'Mardi',
+                'hours.wed': 'Mercredi',
+                'hours.thu': 'Jeudi',
+                'hours.fri': 'Vendredi',
+                'hours.sat': 'Samedi',
+                'hours.sun': 'Dimanche',
+                'hours.time_weekday': '09:00 - 21:00',
+                'hours.time_sunday': '09:00 - 18:00',
+                'hours.support_note': 'Assistance WhatsApp 24/7',
                 'alert.date_invalid': 'La date de fin doit être après la date de début.'
             },
             en: {
@@ -837,6 +958,19 @@
                 'footer.rights': 'All rights reserved',
                 'social.eyebrow': 'Stay connected',
                 'social.title': 'Follow us',
+                'hours.title': 'Business Hours',
+                'hours.status_open': 'Currently open',
+                'hours.status_closed': 'Closed',
+                'hours.mon': 'Monday',
+                'hours.tue': 'Tuesday',
+                'hours.wed': 'Wednesday',
+                'hours.thu': 'Thursday',
+                'hours.fri': 'Friday',
+                'hours.sat': 'Saturday',
+                'hours.sun': 'Sunday',
+                'hours.time_weekday': '09:00 - 21:00',
+                'hours.time_sunday': '09:00 - 18:00',
+                'hours.support_note': 'WhatsApp support 24/7',
                 'alert.date_invalid': 'End date must be after start date.'
             },
             ar: {
@@ -915,6 +1049,19 @@
                 'footer.rights': 'جميع الحقوق محفوظة',
                 'social.eyebrow': 'ابقَ على تواصل',
                 'social.title': 'تابعنا',
+                'hours.title': 'أوقات العمل',
+                'hours.status_open': 'مفتوح الآن',
+                'hours.status_closed': 'مغلق',
+                'hours.mon': 'الإثنين',
+                'hours.tue': 'الثلاثاء',
+                'hours.wed': 'الأربعاء',
+                'hours.thu': 'الخميس',
+                'hours.fri': 'الجمعة',
+                'hours.sat': 'السبت',
+                'hours.sun': 'الأحد',
+                'hours.time_weekday': '09:00 - 21:00',
+                'hours.time_sunday': '09:00 - 18:00',
+                'hours.support_note': 'مساعدة واتساب 24/7',
                 'alert.date_invalid': 'يجب أن يكون تاريخ النهاية بعد تاريخ البداية.'
             }
         };
@@ -952,6 +1099,32 @@
             document.querySelectorAll('.lang-btn').forEach(function (btn) {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
+
+            updateBusinessHoursStatus();
+        }
+
+        function isAgencyOpen(now) {
+            const day = now.getDay();
+            const minutes = now.getHours() * 60 + now.getMinutes();
+            const openMin = 9 * 60;
+            const closeMin = day === 0 ? 18 * 60 : 21 * 60;
+            return minutes >= openMin && minutes < closeMin;
+        }
+
+        function updateBusinessHoursStatus() {
+            const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Africa/Casablanca' }));
+            const open = isAgencyOpen(now);
+            const statusEl = document.getElementById('hours-status');
+            const statusText = document.getElementById('hours-status-text');
+            if (!statusEl || !statusText) return;
+
+            statusEl.classList.toggle('hours-status--open', open);
+            statusEl.classList.toggle('hours-status--closed', !open);
+            statusText.textContent = t(open ? 'hours.status_open' : 'hours.status_closed');
+
+            document.querySelectorAll('.hours-row').forEach(function (row) {
+                row.classList.toggle('hours-row--today', parseInt(row.dataset.day, 10) === now.getDay());
+            });
         }
 
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
@@ -961,6 +1134,7 @@
         });
 
         setLanguage(currentLang);
+        setInterval(updateBusinessHoursStatus, 60000);
 
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
