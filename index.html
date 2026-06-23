@@ -258,6 +258,24 @@
         .hours-row-time { color: #94a3b8; font-variant-numeric: tabular-nums; white-space: nowrap; }
         .hours-row--today .hours-row-day { color: #f59e0b; font-weight: 700; }
         .hours-row--today .hours-row-time { color: #fbbf24; }
+
+        .footer-detail-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(245, 158, 11, 0.85);
+            margin-bottom: 0.25rem;
+        }
+        .footer-detail-value {
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+        .footer-detail-value a {
+            color: #94a3b8;
+            transition: color 0.2s ease;
+        }
+        .footer-detail-value a:hover { color: #f59e0b; }
     </style>
 </head>
 <body class="bg-slate-950 text-white antialiased hero-glow min-h-screen">
@@ -725,6 +743,18 @@
                 <div class="text-center md:text-start">
                     <p class="text-lg font-black text-white">AUTO<span class="text-amber-500">RENT</span></p>
                     <p class="text-slate-500 text-sm mt-2" data-i18n="footer.location">Meknès & Fès · Maroc 🇲🇦</p>
+                    <div class="mt-4 space-y-3 text-sm">
+                        <div>
+                            <p class="footer-detail-label" data-i18n="footer.address_label">Adresse</p>
+                            <p class="footer-detail-value" data-i18n="footer.address">Avenue Hassan II, Meknès, Quartier Hamria — Maroc</p>
+                        </div>
+                        <div>
+                            <p class="footer-detail-label" data-i18n="footer.email_label">Email</p>
+                            <p class="footer-detail-value">
+                                <a href="mailto:contact@autorentmeknes.ma" data-i18n="footer.email">contact@autorentmeknes.ma</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="business-hours" class="hours-card w-full max-w-md mx-auto md:max-w-none">
@@ -864,6 +894,10 @@
                 'cta.title': 'Prêt à partir ?',
                 'cta.desc': 'Contactez-nous sur WhatsApp et recevez une confirmation en moins d\'une minute.',
                 'footer.location': 'Meknès & Fès · Maroc 🇲🇦',
+                'footer.address_label': 'Adresse',
+                'footer.address': 'Avenue Hassan II, Meknès, Quartier Hamria — Maroc',
+                'footer.email_label': 'Email',
+                'footer.email': 'contact@autorentmeknes.ma',
                 'footer.rights': 'Tous droits réservés',
                 'social.eyebrow': 'Restez connectés',
                 'social.title': 'Suivez-nous',
@@ -955,6 +989,10 @@
                 'cta.title': 'Ready to go?',
                 'cta.desc': 'Contact us on WhatsApp and get confirmation in under a minute.',
                 'footer.location': 'Meknes & Fez · Morocco 🇲🇦',
+                'footer.address_label': 'Address',
+                'footer.address': 'Avenue Hassan II, Meknes, Hamria District — Morocco',
+                'footer.email_label': 'Email',
+                'footer.email': 'contact@autorentmeknes.ma',
                 'footer.rights': 'All rights reserved',
                 'social.eyebrow': 'Stay connected',
                 'social.title': 'Follow us',
@@ -1046,6 +1084,10 @@
                 'cta.title': 'مستعد للانطلاق؟',
                 'cta.desc': 'تواصل معنا على واتساب واحصل على تأكيد في أقل من دقيقة.',
                 'footer.location': 'مكناس وفاس · المغرب 🇲🇦',
+                'footer.address_label': 'العنوان',
+                'footer.address': 'شارع الحسن الثاني، مكناس، حي الحمرية — المغرب',
+                'footer.email_label': 'البريد الإلكتروني',
+                'footer.email': 'contact@autorentmeknes.ma',
                 'footer.rights': 'جميع الحقوق محفوظة',
                 'social.eyebrow': 'ابقَ على تواصل',
                 'social.title': 'تابعنا',
