@@ -275,7 +275,13 @@
             color: #94a3b8;
             transition: color 0.2s ease;
         }
-        .footer-detail-value a:hover { color: #f59e0b; }
+        .footer-detail-value a:hover,
+        a.footer-detail-value:hover { color: #f59e0b; }
+        a.footer-detail-value {
+            color: #94a3b8;
+            transition: color 0.2s ease;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-white antialiased hero-glow min-h-screen">
@@ -753,6 +759,10 @@
                             <p class="footer-detail-value">
                                 <a href="mailto:contact@autorentmeknes.ma" data-i18n="footer.email">contact@autorentmeknes.ma</a>
                             </p>
+                        </div>
+                        <div>
+                            <div class="footer-detail-label">TELEPHONE</div>
+                            <a href="tel:+212668744661" class="footer-detail-value">+212 668744661</a>
                         </div>
                     </div>
                 </div>
