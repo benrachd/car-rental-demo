@@ -42,6 +42,145 @@
                 rgb(2, 6, 23);
         }
 
+        .hero-premium {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        .hero-premium__bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2400&q=85');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: scale(1.02);
+        }
+        .hero-premium__overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                linear-gradient(to right, rgba(2, 6, 23, 0.82) 0%, rgba(2, 6, 23, 0.55) 45%, rgba(2, 6, 23, 0.35) 100%),
+                linear-gradient(to top, rgba(2, 6, 23, 0.75) 0%, transparent 50%);
+        }
+        .hero-premium__content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .booking-widget {
+            background: rgba(15, 23, 42, 0.94);
+            border: 1px solid rgba(71, 85, 105, 0.55);
+            border-radius: 0.5rem;
+            box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.65);
+            padding: 1.75rem 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .booking-widget { padding: 2rem 1.75rem; }
+        }
+
+        .booking-field-label {
+            display: block;
+            font-size: 0.625rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-field {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: 1px solid rgba(71, 85, 105, 0.75);
+            border-radius: 0.375rem;
+            background: rgba(2, 6, 23, 0.55);
+            padding: 0.875rem 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .booking-field:focus-within {
+            border-color: rgba(245, 158, 11, 0.45);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+        .booking-field-icon {
+            width: 1.125rem;
+            height: 1.125rem;
+            flex-shrink: 0;
+            color: #f59e0b;
+        }
+        .booking-field select,
+        .booking-field input {
+            flex: 1;
+            min-width: 0;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #f8fafc;
+            font-size: 0.875rem;
+        }
+        .booking-field select { cursor: pointer; appearance: none; }
+        .booking-field input[type="date"] {
+            color-scheme: dark;
+            cursor: pointer;
+        }
+        .booking-field input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(0.7);
+            cursor: pointer;
+        }
+
+        .booking-submit {
+            background: #f59e0b;
+            color: #020617;
+            font-weight: 800;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
+        }
+        .booking-submit:hover {
+            background: #fbbf24;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px rgba(245, 158, 11, 0.45);
+        }
+
+        .hero-stat-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #f59e0b;
+        }
+
+        .site-header {
+            background: rgba(2, 6, 23, 0.35);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-wa-btn {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #020617;
+            font-weight: 700;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 18px rgba(245, 158, 11, 0.3);
+        }
+        .nav-wa-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(245, 158, 11, 0.45);
+        }
+
         .btn-amber {
             background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
             color: #020617;
@@ -285,36 +424,36 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-white antialiased hero-glow min-h-screen">
+<body class="bg-slate-950 text-white antialiased min-h-screen">
 
     <!-- Navbar -->
-    <header class="fixed top-0 inset-x-0 z-50 glass">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-lg btn-amber flex items-center justify-center text-xs font-black">AR</div>
+    <header class="fixed top-0 inset-x-0 z-50 site-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+            <a href="#" class="flex items-center gap-3 shrink-0">
+                <div class="w-10 h-10 rounded-lg btn-amber flex items-center justify-center text-xs font-black tracking-tight">AR</div>
                 <div>
-                    <p class="text-lg font-black tracking-wide leading-none">AUTO<span class="text-amber-500">RENT</span></p>
-                    <p class="text-[10px] text-slate-500 tracking-widest uppercase mt-0.5" data-i18n="nav.cities">Meknès · Fès</p>
+                    <p class="text-base sm:text-lg font-black tracking-wide leading-none">AUTO <span class="text-amber-500">Rent</span></p>
+                    <p class="text-[10px] text-slate-400 tracking-widest uppercase mt-0.5" data-i18n="nav.cities">Meknès · Fès</p>
                 </div>
             </a>
 
             <nav class="hidden lg:flex items-center gap-9">
-                <a href="#booking" class="nav-link" data-i18n="nav.book">Réserver</a>
-                <a href="#fleet" class="nav-link" data-i18n="nav.fleet">Notre flotte</a>
-                <a href="#features" class="nav-link" data-i18n="nav.features">Services</a>
-                <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+                <a href="#booking" class="nav-link text-slate-200" data-i18n="nav.book">Réserver</a>
+                <a href="#fleet" class="nav-link text-slate-200" data-i18n="nav.fleet">Notre flotte</a>
+                <a href="#features" class="nav-link text-slate-200" data-i18n="nav.features">Services</a>
+                <a href="#contact" class="nav-link text-slate-200" data-i18n="nav.contact">Contact</a>
             </nav>
 
-            <div class="flex items-center gap-3">
-                <div class="lang-switch" role="group" aria-label="Language">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <div class="lang-switch hidden sm:flex" role="group" aria-label="Language">
                     <button type="button" class="lang-btn active" data-lang="fr">FR</button>
                     <span class="lang-divider">|</span>
                     <button type="button" class="lang-btn" data-lang="en">EN</button>
                     <span class="lang-divider">|</span>
                     <button type="button" class="lang-btn" data-lang="ar">ع</button>
                 </div>
-                <a href="https://wa.me/212668744661?text=Bonjour%2C%20je%20souhaite%20louer%20une%20voiture%20%C3%A0%20Mekn%C3%A8s%20ou%20F%C3%A8s." class="hidden sm:inline-flex btn-amber text-sm px-5 py-2.5 rounded-lg items-center gap-2">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
+                <a href="https://wa.me/212668744661?text=Bonjour%2C%20je%20souhaite%20louer%20une%20voiture%20%C3%A0%20Mekn%C3%A8s%20ou%20F%C3%A8s." class="nav-wa-btn hidden md:inline-flex text-sm px-4 lg:px-5 py-2.5 rounded-lg items-center gap-2 shrink-0">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.92.92l4.458-1.495A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-4.99-1.364l-.357-.212-2.645.887.887-2.58-.233-.374A9.818 9.818 0 1121.818 12 9.83 9.83 0 0112 21.818z"/></svg>
                     <span data-i18n="nav.whatsapp">WhatsApp</span>
                 </a>
                 <button id="menu-btn" type="button" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-slate-700/60" aria-label="Menu">
@@ -338,73 +477,102 @@
                     <span class="lang-divider">|</span>
                     <button type="button" class="lang-btn" data-lang="ar">ع</button>
                 </div>
-                <a href="https://wa.me/212668744661" class="btn-amber text-center py-3 rounded-lg text-sm mt-1" data-i18n="nav.whatsapp">WhatsApp</a>
+                <a href="https://wa.me/212668744661" class="nav-wa-btn text-center py-3 rounded-lg text-sm mt-1 flex items-center justify-center gap-2" data-i18n="nav.whatsapp">WhatsApp</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero + Booking Widget -->
-    <section id="booking" class="pt-28 pb-20 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <div>
-                    <span class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold tracking-widest uppercase">
-                        <span class="w-6 h-px bg-amber-500"></span>
-                        <span data-i18n="hero.eyebrow">Location premium · Maroc</span>
-                    </span>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mt-5 leading-[1.1]">
+    <section id="booking" class="hero-premium">
+        <div class="hero-premium__bg" aria-hidden="true"></div>
+        <div class="hero-premium__overlay" aria-hidden="true"></div>
+
+        <div class="hero-premium__content max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-16 lg:pt-32 lg:pb-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 xl:gap-16 items-center">
+                <div class="text-center md:text-start">
+                    <p class="text-amber-500 text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase">
+                        <span class="opacity-80">——</span>
+                        <span data-i18n="hero.eyebrow">LOCATION PREMIUM • MAROC</span>
+                    </p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-[3.35rem] xl:text-6xl font-black mt-5 leading-[1.08] text-white">
                         <span data-i18n="hero.title1">Explorez le Maroc</span><br>
                         <span class="text-amber-500" data-i18n="hero.title2">en toute élégance</span>
                     </h1>
-                    <p class="text-slate-400 text-lg mt-6 leading-relaxed max-w-lg" data-i18n="hero.desc">
+                    <p class="text-slate-200/90 text-base sm:text-lg mt-6 leading-relaxed max-w-lg mx-auto md:mx-0" data-i18n="hero.desc">
                         Meknès, Fès et au-delà — flotte récente, tarifs transparents et livraison gratuite à l'aéroport. Réservez en quelques clics.
                     </p>
-                    <div class="flex flex-wrap gap-6 mt-10 text-sm">
-                        <div>
-                            <p class="text-2xl font-black text-amber-500">+500</p>
-                            <p class="text-slate-500 mt-0.5" data-i18n="hero.stat1">Clients satisfaits</p>
+
+                    <div class="flex flex-wrap justify-center md:justify-start gap-6 sm:gap-8 mt-10">
+                        <div class="flex items-center gap-3">
+                            <div class="hero-stat-icon" aria-hidden="true">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            </div>
+                            <div class="text-start">
+                                <p class="text-xl sm:text-2xl font-black text-amber-500 leading-none">+500</p>
+                                <p class="text-white/85 text-xs sm:text-sm mt-1" data-i18n="hero.stat1">Clients satisfaits</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-2xl font-black text-amber-500">24/7</p>
-                            <p class="text-slate-500 mt-0.5" data-i18n="hero.stat2">Assistance</p>
+                        <div class="flex items-center gap-3">
+                            <div class="hero-stat-icon" aria-hidden="true">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                            </div>
+                            <div class="text-start">
+                                <p class="text-xl sm:text-2xl font-black text-amber-500 leading-none">24/7</p>
+                                <p class="text-white/85 text-xs sm:text-sm mt-1" data-i18n="hero.stat2">Assistance</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-2xl font-black text-amber-500">4.9★</p>
-                            <p class="text-slate-500 mt-0.5" data-i18n="hero.stat3">Note moyenne</p>
+                        <div class="flex items-center gap-3">
+                            <div class="hero-stat-icon" aria-hidden="true">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <div class="text-start">
+                                <p class="text-xl sm:text-2xl font-black text-amber-500 leading-none">4.9★</p>
+                                <p class="text-white/85 text-xs sm:text-sm mt-1" data-i18n="hero.stat3">Note moyenne</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="glass rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/30">
-                    <h2 class="text-xl font-bold mb-1" data-i18n="form.title">Réservez votre véhicule</h2>
-                    <p class="text-slate-500 text-sm mb-6" data-i18n="form.subtitle">Disponibilité confirmée en quelques minutes</p>
+                <div class="booking-widget w-full max-w-md mx-auto md:max-w-none md:ms-auto md:me-0">
+                    <h2 class="text-lg sm:text-xl font-bold text-white mb-1" data-i18n="form.title">Réservez votre véhicule</h2>
+                    <p class="text-slate-400 text-sm mb-6" data-i18n="form.subtitle">Disponibilité confirmée en quelques minutes</p>
 
                     <form id="booking-form" class="space-y-4">
                         <div>
-                            <label for="lieu" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form.location">Lieu de prise en charge</label>
-                            <select id="lieu" name="lieu" required class="input-field w-full rounded-xl px-4 py-3.5 text-sm appearance-none cursor-pointer">
-                                <option value="meknes" data-i18n="opt.meknes">Meknès — Centre-ville</option>
-                                <option value="fes" data-i18n="opt.fes">Fès — Centre-ville</option>
-                                <option value="airport" data-i18n="opt.airport">Fès — Aéroport Saïss</option>
-                                <option value="gare" data-i18n="opt.gare">Meknès — Gare ONCF</option>
-                            </select>
-                        </div>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div>
-                                <label for="date-debut" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form.date_start">Date de début</label>
-                                <input type="date" id="date-debut" name="date-debut" required class="input-field w-full rounded-xl px-4 py-3.5 text-sm">
-                            </div>
-                            <div>
-                                <label for="date-fin" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2" data-i18n="form.date_end">Date de fin</label>
-                                <input type="date" id="date-fin" name="date-fin" required class="input-field w-full rounded-xl px-4 py-3.5 text-sm">
+                            <label for="lieu" class="booking-field-label" data-i18n="form.location">Lieu de prise en charge</label>
+                            <div class="booking-field">
+                                <svg class="booking-field-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                <select id="lieu" name="lieu" required aria-label="Lieu de prise en charge">
+                                    <option value="meknes" data-i18n="opt.meknes">Meknès — Centre-ville</option>
+                                    <option value="fes" data-i18n="opt.fes">Fès — Centre-ville</option>
+                                    <option value="airport" data-i18n="opt.airport">Fès — Aéroport Saïss</option>
+                                    <option value="gare" data-i18n="opt.gare">Meknès — Gare ONCF</option>
+                                </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn-amber w-full py-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 mt-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <div>
+                            <label for="date-debut" class="booking-field-label" data-i18n="form.date_start">Date de début</label>
+                            <div class="booking-field">
+                                <svg class="booking-field-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <input type="date" id="date-debut" name="date-debut" required aria-label="Date de début">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="date-fin" class="booking-field-label" data-i18n="form.date_end">Date de fin</label>
+                            <div class="booking-field">
+                                <svg class="booking-field-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <input type="date" id="date-fin" name="date-fin" required aria-label="Date de fin">
+                            </div>
+                        </div>
+                        <button type="submit" class="booking-submit w-full py-4 rounded-lg text-sm sm:text-base flex items-center justify-center gap-2 mt-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                             <span data-i18n="form.search">Rechercher</span>
                         </button>
                     </form>
-                    <p class="text-slate-600 text-xs text-center mt-4" data-i18n="form.confirm">Confirmation instantanée via WhatsApp</p>
+                    <p class="text-slate-500 text-xs text-center mt-5 flex items-center justify-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 shrink-0 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        <span data-i18n="form.confirm">Confirmation instantanée et sécurisée</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -850,7 +1018,7 @@
                 'nav.features': 'Services',
                 'nav.contact': 'Contact',
                 'nav.whatsapp': 'WhatsApp',
-                'hero.eyebrow': 'Location premium · Maroc',
+                'hero.eyebrow': 'LOCATION PREMIUM • MAROC',
                 'hero.title1': 'Explorez le Maroc',
                 'hero.title2': 'en toute élégance',
                 'hero.desc': 'Meknès, Fès et au-delà — flotte récente, tarifs transparents et livraison gratuite à l\'aéroport. Réservez en quelques clics.',
@@ -863,7 +1031,7 @@
                 'form.date_start': 'Date de début',
                 'form.date_end': 'Date de fin',
                 'form.search': 'Rechercher',
-                'form.confirm': 'Confirmation instantanée via WhatsApp',
+                'form.confirm': 'Confirmation instantanée et sécurisée',
                 'opt.meknes': 'Meknès — Centre-ville',
                 'opt.fes': 'Fès — Centre-ville',
                 'opt.airport': 'Fès — Aéroport Saïss',
@@ -945,7 +1113,7 @@
                 'nav.features': 'Services',
                 'nav.contact': 'Contact',
                 'nav.whatsapp': 'WhatsApp',
-                'hero.eyebrow': 'Premium rental · Morocco',
+                'hero.eyebrow': 'PREMIUM RENTAL • MOROCCO',
                 'hero.title1': 'Explore Morocco',
                 'hero.title2': 'in True Elegance',
                 'hero.desc': 'Meknes, Fez and beyond — modern fleet, transparent pricing and free airport delivery. Book in just a few clicks.',
@@ -958,7 +1126,7 @@
                 'form.date_start': 'Start date',
                 'form.date_end': 'End date',
                 'form.search': 'Search',
-                'form.confirm': 'Instant confirmation via WhatsApp',
+                'form.confirm': 'Instant secure confirmation',
                 'opt.meknes': 'Meknes — City centre',
                 'opt.fes': 'Fez — City centre',
                 'opt.airport': 'Fez — Saiss Airport',
@@ -1040,7 +1208,7 @@
                 'nav.features': 'خدماتنا',
                 'nav.contact': 'اتصل',
                 'nav.whatsapp': 'واتساب',
-                'hero.eyebrow': 'تأجير فاخر · المغرب',
+                'hero.eyebrow': 'تأجير فاخر • المغرب',
                 'hero.title1': 'استكشف المغرب',
                 'hero.title2': 'بكل فخامة',
                 'hero.desc': 'مكناس، فاس — أسطول حديث، أسعار شفافة وتوصيل مجاني للمطار. احجز في بضع نقرات.',
@@ -1053,7 +1221,7 @@
                 'form.date_start': 'تاريخ البداية',
                 'form.date_end': 'تاريخ النهاية',
                 'form.search': 'بحث',
-                'form.confirm': 'تأكيد فوري عبر واتساب',
+                'form.confirm': 'تأكيد فوري وآمن',
                 'opt.meknes': 'مكناس — وسط المدينة',
                 'opt.fes': 'فاس — وسط المدينة',
                 'opt.airport': 'فاس — مطار سايس',
