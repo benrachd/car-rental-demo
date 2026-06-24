@@ -60,7 +60,6 @@
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: rgba(0, 0, 0, 0.4);
         }
         .hero-premium__content {
             position: relative;
@@ -527,11 +526,8 @@
     </header>
 
     <!-- Hero + Booking Widget -->
-    <section id="booking" class="hero-premium">
-        <div class="hero-premium__bg bg-[url('images/hero-mobile.jpeg')] bg-cover bg-center bg-no-repeat md:bg-[url('images/hero-morocco-road.png')]" aria-hidden="true"></div>
-        <div class="hero-premium__overlay bg-black/40" aria-hidden="true"></div>
-
-        <div class="hero-premium__content max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-16 lg:pt-32 lg:pb-20">
+    <section id="booking" class="hero-premium relative bg-[url('images/hero-mobile.jpeg')] bg-cover bg-center bg-no-repeat md:bg-[url('images/hero-morocco-road.png')] before:absolute before:inset-0 before:bg-black/60 before:z-0 before:content-['']">
+        <div class="hero-premium__content relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-16 lg:pt-32 lg:pb-20">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 xl:gap-16 items-center">
                 <div class="text-center md:text-start">
                     <p class="text-amber-500 text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase">
