@@ -56,7 +56,8 @@
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: stretch;
-                overflow: hidden;
+                overflow-x: hidden;
+                overflow-y: visible;
                 height: 100dvh;
                 min-height: unset;
             }
@@ -537,9 +538,9 @@
 
     <!-- Hero + Booking Widget -->
     <section id="booking" class="hero-premium relative max-md:h-screen max-md:w-full max-md:flex max-md:flex-col max-md:justify-between max-md:bg-[url('images/mobil.jpeg')] max-md:bg-cover max-md:bg-center md:bg-[url('images/hero-morocco-road.png')] md:bg-center md:bg-cover md:bg-no-repeat before:absolute before:inset-0 max-md:before:bg-black/60 before:z-0 before:content-['']">
-        <div class="hero-premium__content relative z-10 w-full max-w-7xl mx-auto max-md:flex max-md:flex-col max-md:flex-grow max-md:min-h-0 md:px-6 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
-            <div class="max-md:flex max-md:flex-col max-md:flex-grow max-md:justify-between max-md:min-h-0 max-md:px-4 max-md:pt-10 md:grid md:grid-cols-2 md:gap-10 lg:gap-14 xl:gap-16 md:items-center">
-                <div class="text-center md:text-start max-md:flex-grow">
+        <div class="hero-premium__content relative z-10 w-full max-w-7xl mx-auto max-md:flex max-md:flex-col max-md:flex-grow max-md:min-h-0 max-md:pt-20 md:px-6 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
+            <div class="max-md:flex max-md:flex-col max-md:flex-grow max-md:justify-between max-md:min-h-0 max-md:overflow-visible max-md:px-4 md:grid md:grid-cols-2 md:gap-10 lg:gap-14 xl:gap-16 md:items-center">
+                <div class="text-center md:text-start max-md:shrink-0 max-md:overflow-visible">
                     <p class="text-amber-500 text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase">
                         <span class="opacity-80">——</span>
                         <span data-i18n="hero.eyebrow">LOCATION PREMIUM • MAROC</span>
