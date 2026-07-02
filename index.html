@@ -480,65 +480,90 @@
         .location-section {
             position: relative;
             background:
-                radial-gradient(ellipse 70% 45% at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 58%),
+                radial-gradient(ellipse 60% 40% at 50% 0%, rgba(245, 158, 11, 0.06) 0%, transparent 55%),
                 rgb(2, 6, 23);
         }
+        .location-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .location-card {
+            background: rgba(15, 23, 42, 0.58);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(51, 65, 85, 0.52);
+            border-radius: 20px;
+            box-shadow:
+                0 24px 56px -16px rgba(0, 0, 0, 0.55),
+                0 0 0 1px rgba(245, 158, 11, 0.05);
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+        @media (min-width: 640px) {
+            .location-card { padding: 2rem 2.25rem; }
+        }
+        .location-card__header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+        @media (min-width: 768px) {
+            .location-card__header {
+                flex-direction: row;
+                align-items: flex-end;
+                justify-content: space-between;
+                gap: 2rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+        .location-card__intro { max-width: 36rem; }
         .location-open-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.625rem;
-            padding: 0.875rem 1.75rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 0.75rem;
             background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
             color: #020617;
             font-weight: 700;
             font-size: 0.875rem;
+            white-space: nowrap;
             transition: all 0.25s ease;
-            box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.45);
+            box-shadow: 0 10px 28px -10px rgba(245, 158, 11, 0.45);
             text-decoration: none;
+            flex-shrink: 0;
         }
         .location-open-btn:hover {
             transform: translateY(-2px);
             filter: brightness(1.05);
             box-shadow: 0 14px 34px -10px rgba(245, 158, 11, 0.55);
         }
-        .location-map__frame {
+        .location-card__map {
             position: relative;
             width: 100%;
-            height: 500px;
+            height: 300px;
+            border-radius: 20px;
             overflow: hidden;
-            border-top: 1px solid rgba(51, 65, 85, 0.55);
-            background: rgba(15, 23, 42, 0.85);
-            box-shadow: 0 -24px 60px -20px rgba(0, 0, 0, 0.55);
+            border: 1px solid rgba(51, 65, 85, 0.45);
+            background: rgba(2, 6, 23, 0.65);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
         }
         @media (min-width: 768px) {
-            .location-map__frame { height: 560px; }
+            .location-card__map { height: 340px; }
         }
         @media (min-width: 1024px) {
-            .location-map__frame { height: 600px; }
+            .location-card__map { height: 380px; }
         }
-        .location-map__frame::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-            background: linear-gradient(
-                to bottom,
-                rgba(2, 6, 23, 0.4) 0%,
-                transparent 14%,
-                transparent 86%,
-                rgba(2, 6, 23, 0.45) 100%
-            );
-        }
-        .location-map__frame iframe {
+        .location-card__map iframe {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
             border: 0;
-            filter: grayscale(12%) contrast(1.06) saturate(0.92);
+            filter: grayscale(10%) contrast(1.05) saturate(0.92);
         }
     </style>
 </head>
@@ -1029,33 +1054,35 @@
         </div>
     </section>
 
-    <!-- Our Location -->
-    <section id="location" class="location-section border-t border-slate-800/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-20 pb-12">
-            <div class="text-center max-w-2xl mx-auto">
-                <span class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold tracking-widest uppercase justify-center">
-                    <span class="w-6 h-px bg-amber-500"></span>
-                    <span data-i18n="location.eyebrow">Localisation</span>
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-black mt-3 text-white" data-i18n="location.title">Notre agence</h2>
-                <p class="text-slate-400 mt-4 leading-relaxed" data-i18n="location.desc">
-                    Retrouvez Auto Rent à Meknès pour la prise en charge de votre véhicule, conseils personnalisés et assistance sur place.
-                </p>
-                <a href="https://www.google.com/maps/search/?api=1&query=33.893791,-5.547278" target="_blank" rel="noopener noreferrer" class="location-open-btn mt-8">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                    <span data-i18n="location.open_btn">Ouvrir dans Google Maps</span>
-                </a>
-            </div>
-        </div>
-        <div class="location-map">
-            <div class="location-map__frame">
-                <iframe
-                    title="Carte Google Maps — Auto Rent Meknès (démo)"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.726!2d-5.547278!3d33.893791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b871ee30b2d%3A0x31dd899d163a5423!2sMekn%C3%A8s!5e0!3m2!1sfr!2sma!4v1719500000000!5m2!1sfr!2sma"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
+    <!-- Notre localisation -->
+    <section id="location" class="location-section border-t border-slate-800/60 py-16 sm:py-20 px-4 sm:px-6">
+        <div class="location-container">
+            <div class="location-card">
+                <div class="location-card__header">
+                    <div class="location-card__intro">
+                        <span class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold tracking-widest uppercase">
+                            <span class="w-6 h-px bg-amber-500"></span>
+                            <span data-i18n="location.eyebrow">Localisation</span>
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-black mt-3 text-white" data-i18n="location.title">Notre localisation</h2>
+                        <p class="text-slate-400 mt-3 leading-relaxed text-sm sm:text-base" data-i18n="location.subtitle">
+                            Retrouvez notre agence à Meknès — prise en charge véhicule, conseils et assistance sur place.
+                        </p>
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=33.893791,-5.547278" target="_blank" rel="noopener noreferrer" class="location-open-btn">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        <span data-i18n="location.open_btn">Ouvrir dans Google Maps</span>
+                    </a>
+                </div>
+                <div class="location-card__map">
+                    <iframe
+                        title="Carte Google Maps — Auto Rent Meknès (démo)"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.726!2d-5.547278!3d33.893791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b871ee30b2d%3A0x31dd899d163a5423!2sMekn%C3%A8s!5e0!3m2!1sfr!2sma!4v1719500000000!5m2!1sfr!2sma"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -1239,8 +1266,8 @@
                 'social.eyebrow': 'Restez connectés',
                 'social.title': 'Suivez-nous',
                 'location.eyebrow': 'Localisation',
-                'location.title': 'Notre agence',
-                'location.desc': 'Retrouvez Auto Rent à Meknès pour la prise en charge de votre véhicule, conseils personnalisés et assistance sur place.',
+                'location.title': 'Notre localisation',
+                'location.subtitle': 'Retrouvez notre agence à Meknès — prise en charge véhicule, conseils et assistance sur place.',
                 'location.open_btn': 'Ouvrir dans Google Maps',
                 'hours.title': 'Horaires',
                 'hours.status_open': 'Actuellement ouvert',
@@ -1339,7 +1366,7 @@
                 'social.title': 'Follow us',
                 'location.eyebrow': 'Location',
                 'location.title': 'Our Location',
-                'location.desc': 'Visit Auto Rent in Meknes for vehicle pick-up, personalised advice and on-site assistance.',
+                'location.subtitle': 'Find our agency in Meknes — vehicle pick-up, advice and on-site assistance.',
                 'location.open_btn': 'Open in Google Maps',
                 'hours.title': 'Business Hours',
                 'hours.status_open': 'Currently open',
@@ -1438,7 +1465,7 @@
                 'social.title': 'تابعنا',
                 'location.eyebrow': 'الموقع',
                 'location.title': 'موقعنا',
-                'location.desc': 'تفضل بزيارة Auto Rent في مكناس لاستلام سيارتك، الحصول على نصائح مخصصة ومساعدة في الموقع.',
+                'location.subtitle': 'تفضل بزيارة وكالتنا في مكناس — استلام السيارة، النصائح والمساعدة في الموقع.',
                 'location.open_btn': 'فتح في Google Maps',
                 'hours.title': 'أوقات العمل',
                 'hours.status_open': 'مفتوح الآن',
